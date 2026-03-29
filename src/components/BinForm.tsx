@@ -5,6 +5,7 @@ import { useBinActions } from '../hooks/useBinActions';
 import { handleStateTransition } from '../hooks/useStateTransitions';
 import { formatDateForInput } from '../utils/dates';
 import { useToast } from './Toast';
+import { handleCameraError, handleStorageError } from '../utils/errors';
 
 interface BinFormProps {
   onSubmit: (data: BinFormData) => void;
@@ -52,22 +53,39 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const previewUrl = URL.createObjectURL(file);
-      setImagePreview(previewUrl);
-      setFormData({ ...formData, image: file });
-      showToast('Image selected', 'info');
+    try {
+      const file = e.target.files?.[0];
+      if (file) {
+        // Validate file type
+        if (!file.type.startsWith('image/')) {
+          showToast('Please select a valid image file', 'error');
+          return;
+        }
+
+        const previewUrl = URL.createObjectURL(file);
+        setImagePreview(previewUrl);
+        setFormData({ ...formData, image: file });
+        showToast('Image selected', 'info');
+      }
+    } catch (error) {
+      console.error('Failed to select image:', error);
+      const errorMessage = handleCameraError(error);
+      showToast(errorMessage, 'error');
     }
   };
 
   const handleRemoveImage = () => {
-    if (imagePreview) {
-      URL.revokeObjectURL(imagePreview);
+    try {
+      if (imagePreview) {
+        URL.revokeObjectURL(imagePreview);
+      }
+      setImagePreview(null);
+      setFormData({ ...formData, image: null });
+      showToast('Image removed', 'info');
+    } catch (error) {
+      console.error('Failed to remove image:', error);
+      showToast('Failed to remove image', 'error');
     }
-    setImagePreview(null);
-    setFormData({ ...formData, image: null });
-    showToast('Image removed', 'info');
   };
 
   const validate = (): boolean => {
@@ -104,7 +122,8 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
       onSubmit(formData);
     } catch (error) {
       console.error('Failed to create bin:', error);
-      showToast('Failed to save bin', 'error');
+      const errorMessage = error instanceof Error ? error.message : 'Failed to save bin';
+      showToast(errorMessage, 'error');
     } finally {
       setIsSubmitting(false);
     }

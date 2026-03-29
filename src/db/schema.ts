@@ -8,6 +8,7 @@ export interface Bin {
   fermentingStartDate: Date | null;
   createdAt: Date;
   updatedAt: Date;
+  image: Blob | null;
 }
 
 export class BinkashiDB extends Dexie {
@@ -16,7 +17,7 @@ export class BinkashiDB extends Dexie {
   constructor() {
     super('BinkashiDB');
     this.version(1).stores({
-      bins: '++id, name, state, inUseStartDate, fermentingStartDate, createdAt, updatedAt'
+      bins: '++id, name, state, inUseStartDate, fermentingStartDate, createdAt, updatedAt, image'
     });
   }
 }

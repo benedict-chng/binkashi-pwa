@@ -13,6 +13,7 @@ export interface BinFormData {
   state: BinState;
   inUseStartDate: Date | null;
   fermentingStartDate: Date | null;
+  image?: File | Blob | null;
 }
 
 export const BIN_STATES: BinState[] = ['Empty', 'In Use', 'Fermenting'];

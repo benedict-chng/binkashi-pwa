@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { BinFormData, BinState, BIN_STATES, getStateLabel } from '../types/bin';
+import type { BinFormData, BinState } from '../types/bin';
+import { BIN_STATES, getStateLabel } from '../types/bin';
 import { useBinActions } from '../hooks/useBinActions';
 import { handleStateTransition } from '../hooks/useStateTransitions';
 import { formatDateForInput } from '../utils/dates';

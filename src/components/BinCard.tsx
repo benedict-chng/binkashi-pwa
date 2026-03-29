@@ -1,4 +1,5 @@
-import { Bin, getStateLabel, formatBinDate } from '../types/bin';
+import type { Bin } from '../types/bin';
+import { getStateLabel, formatBinDate } from '../types/bin';
 
 interface BinCardProps {
   bin: Bin;

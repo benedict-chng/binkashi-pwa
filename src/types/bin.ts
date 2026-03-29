@@ -1,4 +1,4 @@
-import { Bin as DBBin } from '../db/schema';
+import type { Bin as DBBin } from '../db/schema';
 
 export type BinState = 'Empty' | 'In Use' | 'Fermenting';
 

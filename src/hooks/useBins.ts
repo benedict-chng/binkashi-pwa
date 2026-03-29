@@ -1,6 +1,6 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../db/schema';
-import { Bin, SortField } from '../types/bin';
+import type { Bin, SortField } from '../types/bin';
 
 export function useBins(sortField: SortField = 'createdAt') {
   return useLiveQuery(

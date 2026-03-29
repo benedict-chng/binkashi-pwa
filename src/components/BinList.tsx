@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useBins } from '../hooks/useBins';
 import { BinCard } from './BinCard';
-import { SortField } from '../types/bin';
+import type { SortField } from '../types/bin';
 
 export function BinList() {
   const [sortBy, setSortBy] = useState<SortField>('createdAt');

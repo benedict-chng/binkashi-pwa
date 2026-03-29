@@ -1,4 +1,4 @@
-import { BinState } from '../types/bin';
+import type { BinState } from '../types/bin';
 
 /**
  * Apply state transition rules when bin state changes.

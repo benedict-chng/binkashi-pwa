@@ -1,5 +1,5 @@
 import { db } from '../db/schema';
-import { Bin, BinFormData } from '../types/bin';
+import type { BinFormData } from '../types/bin';
 
 export function useBinActions() {
   /**

@@ -69,7 +69,7 @@ Plan list:
 **Plans**: 3 plans
 
 Plan list:
-- [ ] 02-01-PLAN.md — Image capture & storage (camera, file upload, Blob storage)
+- [x] 02-01-PLAN.md — Image capture & storage (camera, file upload, Blob storage)
 - [ ] 02-02-PLAN.md — Image display & thumbnails (BinCard thumbnails, ImageModal)
 - [ ] 02-03-PLAN.md — Responsive UI & visual feedback (touch targets, toast notifications)
 **UI hint**: yes

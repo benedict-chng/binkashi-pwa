@@ -4,6 +4,7 @@ import { BIN_STATES, getStateLabel } from '../types/bin';
 import { useBinActions } from '../hooks/useBinActions';
 import { handleStateTransition } from '../hooks/useStateTransitions';
 import { formatDateForInput } from '../utils/dates';
+import { useToast } from './Toast';
 
 interface BinFormProps {
   onSubmit: (data: BinFormData) => void;
@@ -13,6 +14,7 @@ interface BinFormProps {
 
 export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: BinFormProps) {
   const { createBin } = useBinActions();
+  const { showToast } = useToast();
 
   const [formData, setFormData] = useState<BinFormData>(initialData || {
     name: '',
@@ -55,6 +57,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
       const previewUrl = URL.createObjectURL(file);
       setImagePreview(previewUrl);
       setFormData({ ...formData, image: file });
+      showToast('Image selected', 'info');
     }
   };
 
@@ -64,6 +67,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
     }
     setImagePreview(null);
     setFormData({ ...formData, image: null });
+    showToast('Image removed', 'info');
   };
 
   const validate = (): boolean => {
@@ -96,10 +100,11 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
         URL.revokeObjectURL(imagePreview);
         setImagePreview(null);
       }
+      showToast('Bin saved successfully', 'success');
       onSubmit(formData);
     } catch (error) {
       console.error('Failed to create bin:', error);
-      setErrors({ submit: 'Failed to create bin. Please try again.' });
+      showToast('Failed to save bin', 'error');
     } finally {
       setIsSubmitting(false);
     }
@@ -258,10 +263,6 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
       >
         {isSubmitting ? 'Creating...' : submitLabel}
       </button>
-
-      {errors.submit && (
-        <p className="text-sm text-red-500 text-center">{errors.submit}</p>
-      )}
     </form>
   );
 }

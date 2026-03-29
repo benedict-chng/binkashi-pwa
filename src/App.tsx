@@ -1,10 +1,12 @@
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { BinList } from './components/BinList';
 import { BinForm } from './components/BinForm';
+import { ToastProvider } from './components/Toast';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <ToastProvider>
+      <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -21,6 +23,7 @@ function App() {
         </Routes>
       </main>
     </div>
+    </ToastProvider>
   );
 }
 

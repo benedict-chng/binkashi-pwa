@@ -1,12 +1,38 @@
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { BinList } from './components/BinList';
 import { BinForm } from './components/BinForm';
-import { ToastProvider } from './components/Toast';
+import { ToastProvider, useToast } from './components/Toast';
 
 function App() {
   return (
     <ToastProvider>
-      <div className="min-h-screen bg-gray-50">
+      <AppContent />
+    </ToastProvider>
+  );
+}
+
+function AppContent() {
+  const { showToast } = useToast();
+
+  useEffect(() => {
+    // Listen for service worker updates (custom event from vite-plugin-pwa)
+    const handleUpdate = () => {
+      // Show toast notification about new version
+      // User can refresh to get update
+      showToast('New version available. Refresh to update.', 'info');
+    };
+
+    // Listen for custom event dispatched by vite-plugin-pwa
+    window.addEventListener('swUpdate', handleUpdate);
+
+    return () => {
+      window.removeEventListener('swUpdate', handleUpdate);
+    };
+  }, [showToast]);
+
+  return (
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
@@ -23,7 +49,6 @@ function App() {
         </Routes>
       </main>
     </div>
-    </ToastProvider>
   );
 }
 

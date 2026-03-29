@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useBins } from '../hooks/useBins';
 import { useBinActions } from '../hooks/useBinActions';
 import { BinCard } from './BinCard';
@@ -15,6 +15,7 @@ export function BinList() {
   const bins = useBins(sortBy);
   const { deleteBin } = useBinActions();
   const { showToast } = useToast();
+  const navigate = useNavigate();
 
   const handleImageClick = (imageUrl: string) => {
     setSelectedImage(imageUrl);
@@ -28,6 +29,10 @@ export function BinList() {
       console.error('Failed to delete bin:', error);
       showToast('Failed to delete bin', 'error');
     }
+  };
+
+  const handleEdit = (id: number) => {
+    navigate(`/bins/${id}/edit`);
   };
 
   const handleCloseModal = () => {
@@ -80,7 +85,7 @@ export function BinList() {
       {/* Bin grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {bins.map((bin) => (
-          <BinCard key={bin.id} bin={bin} onImageClick={handleImageClick} onDelete={handleDelete} />
+          <BinCard key={bin.id} bin={bin} onImageClick={handleImageClick} onDelete={handleDelete} onEdit={handleEdit} />
         ))}
       </div>
 

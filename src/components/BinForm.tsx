@@ -13,10 +13,12 @@ interface BinFormProps {
   onSubmit: (data: BinFormData) => void;
   initialData?: BinFormData;
   submitLabel?: string;
+  editMode?: boolean;
+  binId?: number;
 }
 
-export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: BinFormProps) {
-  const { createBin } = useBinActions();
+export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin', editMode = false, binId }: BinFormProps) {
+  const { createBin, updateBin } = useBinActions();
   const { showToast } = useToast();
 
   const [formData, setFormData] = useState<BinFormData>(initialData || {
@@ -127,25 +129,31 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
 
     setIsSubmitting(true);
     try {
-      await createBin(formData);
+      if (editMode && binId !== undefined) {
+        await updateBin(binId, formData);
+      } else {
+        await createBin(formData);
+      }
       // Clear image preview after successful submission
       if (imagePreview) {
         URL.revokeObjectURL(imagePreview);
         setImagePreview(null);
       }
-      // Reset form state to default
-      setFormData({
-        name: '',
-        state: 'Empty',
-        inUseStartDate: null,
-        fermentingStartDate: null,
-        image: null,
-      });
-      setErrors({});
+      // Reset form state to default only in create mode
+      if (!editMode) {
+        setFormData({
+          name: '',
+          state: 'Empty',
+          inUseStartDate: null,
+          fermentingStartDate: null,
+          image: null,
+        });
+        setErrors({});
+      }
       showToast('Bin saved successfully', 'success');
       onSubmit(formData);
     } catch (error) {
-      console.error('Failed to create bin:', error);
+      console.error('Failed to save bin:', error);
       const errorMessage = error instanceof Error ? error.message : 'Failed to save bin';
       showToast(errorMessage, 'error');
     } finally {
@@ -310,7 +318,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
         disabled={isSubmitting || isCompressing}
         className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed btn-primary"
       >
-        {isSubmitting ? 'Creating...' : submitLabel}
+        {isSubmitting ? 'Saving...' : (editMode ? 'Update Bin' : submitLabel)}
       </button>
 
       {/* Loading state during submission */}

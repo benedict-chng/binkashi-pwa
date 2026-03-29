@@ -38,7 +38,12 @@
 4. User can install the app on their mobile device and launch it from home screen
 5. User can sort bins by any field (name, state, date) and see the list reorder immediately
 
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plan list:
+- [ ] 01-01-PLAN.md — Foundation setup (Vite, React, TypeScript, PWA, Dexie)
+- [ ] 01-02-PLAN.md — Bin types, data layer, and list component
+- [ ] 01-03-PLAN.md — Bin forms, routing, and state transitions
 
 ### Phase 2: Image Handling & User Interface
 
@@ -88,7 +93,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. PWA Foundation & Core Bin Management | 0/0 | Not started | - |
+| 1. PWA Foundation & Core Bin Management | 0/3 | Planned | - |
 | 2. Image Handling & User Interface | 0/0 | Not started | - |
 | 3. Polish & User Experience | 0/0 | Not started | - |
 

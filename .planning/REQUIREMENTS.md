@@ -15,10 +15,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### State Management
 
-- [ ] **STATE-01**: User can set bin state to Empty, In Use, or Fermenting
-- [ ] **STATE-02**: User can set inUseStartDate when creating or editing a bin
-- [ ] **STATE-03**: User can set fermentingStartDate when creating or editing a bin
-- [ ] **STATE-04**: User can clear inUseStartDate and fermentingStartDate when setting state to Empty
+- [x] **STATE-01**: User can set bin state to Empty, In Use, or Fermenting
+- [x] **STATE-02**: User can set inUseStartDate when creating or editing a bin
+- [x] **STATE-03**: User can set fermentingStartDate when creating or editing a bin
+- [x] **STATE-04**: User can clear inUseStartDate and fermentingStartDate when setting state to Empty
 
 ### Image Handling
 
@@ -102,10 +102,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BIN-01 | Phase 1 | Complete |
 | BIN-02 | Phase 1 | Complete |
 | BIN-03 | Phase 1 | Complete |
-| STATE-01 | Phase 1 | Pending |
-| STATE-02 | Phase 1 | Pending |
-| STATE-03 | Phase 1 | Pending |
-| STATE-04 | Phase 1 | Pending |
+| STATE-01 | Phase 1 | Complete |
+| STATE-02 | Phase 1 | Complete |
+| STATE-03 | Phase 1 | Complete |
+| STATE-04 | Phase 1 | Complete |
 | IMG-01 | Phase 2 | Pending |
 | IMG-02 | Phase 2 | Pending |
 | IMG-03 | Phase 2 | Pending |

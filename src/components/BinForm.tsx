@@ -4,6 +4,7 @@ import { BIN_STATES, getStateLabel } from '../types/bin';
 import { useBinActions } from '../hooks/useBinActions';
 import { handleStateTransition } from '../hooks/useStateTransitions';
 import { formatDateForInput } from '../utils/dates';
+import { compressImage } from '../utils/imageCompression';
 import { useToast } from './Toast';
 import { handleCameraError } from '../utils/errors';
 
@@ -27,6 +28,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isCompressing, setIsCompressing] = useState(false);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   // Handle image preview from initialData (for edit mode)
@@ -52,7 +54,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
     setFormData({ ...formData, [field]: value });
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
       const file = e.target.files?.[0];
       if (file) {
@@ -62,15 +64,27 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
           return;
         }
 
-        const previewUrl = URL.createObjectURL(file);
+        setIsCompressing(true);
+        showToast('Compressing image...', 'info');
+
+        // Compress image before storage
+        const compressedImage = await compressImage(file, {
+          maxWidth: 1200,
+          quality: 0.8,
+          maxSizeKB: 500,
+        });
+
+        const previewUrl = URL.createObjectURL(compressedImage);
         setImagePreview(previewUrl);
-        setFormData({ ...formData, image: file });
+        setFormData({ ...formData, image: compressedImage });
         showToast('Image selected', 'info');
       }
     } catch (error) {
       console.error('Failed to select image:', error);
       const errorMessage = handleCameraError(error);
       showToast(errorMessage, 'error');
+    } finally {
+      setIsCompressing(false);
     }
   };
 
@@ -227,7 +241,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
             <button
               type="button"
               onClick={handleRemoveImage}
-              disabled={isSubmitting}
+              disabled={isSubmitting || isCompressing}
               className="absolute top-2 right-2 bg-red-600 text-white px-3 py-2 rounded-md text-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
             >
               Remove
@@ -242,15 +256,17 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
               type="file"
               accept="image/*"
               onChange={handleFileChange}
-              disabled={isSubmitting}
+              disabled={isSubmitting || isCompressing}
               className="hidden"
               id="upload-photo"
             />
             <label
               htmlFor="upload-photo"
-              className="block w-full text-center bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer"
+              className={`block w-full text-center bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer ${
+                isCompressing ? 'opacity-75' : ''
+              }`}
             >
-              Upload Photo
+              {isCompressing ? 'Compressing...' : 'Upload Photo'}
             </label>
           </div>
 
@@ -260,15 +276,17 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
               accept="image/*"
               capture="environment"
               onChange={handleFileChange}
-              disabled={isSubmitting}
+              disabled={isSubmitting || isCompressing}
               className="hidden"
               id="take-photo"
             />
             <label
               htmlFor="take-photo"
-              className="block w-full text-center bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer"
+              className={`block w-full text-center bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer ${
+                isCompressing ? 'opacity-75' : ''
+              }`}
             >
-              Take Photo
+              {isCompressing ? 'Compressing...' : 'Take Photo'}
             </label>
           </div>
         </div>
@@ -277,7 +295,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
       {/* Submit button */}
       <button
         type="submit"
-        disabled={isSubmitting}
+        disabled={isSubmitting || isCompressing}
         className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
       >
         {isSubmitting ? 'Creating...' : submitLabel}

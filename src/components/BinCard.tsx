@@ -18,17 +18,22 @@ export function BinCard({ bin, onImageClick, onDelete }: BinCardProps) {
   useEffect(() => {
     // Check if browser supports native lazy loading
     const supportsLazyLoading = 'loading' in HTMLImageElement.prototype;
-    const shouldLoadImmediately = supportsLazyLoading || imageRef.current?.isIntersecting;
 
-    if (bin.image && shouldLoadImmediately) {
+    if (bin.image && supportsLazyLoading) {
+      // Native lazy loading is supported, load image immediately
+      // The browser will handle lazy loading via loading="lazy" attribute
       const url = URL.createObjectURL(bin.image);
       setImageUrl(url);
 
       return () => {
         URL.revokeObjectURL(url);
       };
-    } else if (bin.image && !supportsLazyLoading && imageRef.current) {
+    } else if (bin.image && !supportsLazyLoading) {
       // Use IntersectionObserver for browsers without native lazy loading (e.g., Safari < 15.4)
+      if (!imageRef.current) {
+        return;
+      }
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {

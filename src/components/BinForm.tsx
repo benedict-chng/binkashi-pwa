@@ -111,10 +111,10 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-5">
       {/* Name field */}
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="name" className="block text-base font-medium text-gray-700 mb-1">
           Name *
         </label>
         <input
@@ -123,7 +123,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
           value={formData.name}
           onChange={(e) => handleFieldChange('name', e.target.value)}
           placeholder="e.g., Kitchen Bin"
-          className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 ${
+          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 ${
             errors.name ? 'border-red-500' : 'border-gray-300'
           }`}
           disabled={isSubmitting}
@@ -133,14 +133,14 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
 
       {/* State field */}
       <div>
-        <label htmlFor="state" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="state" className="block text-base font-medium text-gray-700 mb-1">
           State
         </label>
         <select
           id="state"
           value={formData.state}
           onChange={(e) => handleFieldChange('state', e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
           disabled={isSubmitting}
         >
           {BIN_STATES.map((state) => (
@@ -156,7 +156,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
 
       {/* In Use Start Date field */}
       <div>
-        <label htmlFor="inUseStartDate" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="inUseStartDate" className="block text-base font-medium text-gray-700 mb-1">
           In Use Start Date
         </label>
         <input
@@ -164,7 +164,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
           id="inUseStartDate"
           value={formatDateForInput(formData.inUseStartDate)}
           onChange={(e) => handleFieldChange('inUseStartDate', e.target.value ? new Date(e.target.value) : null)}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
           disabled={isSubmitting || formData.state === 'Empty'}
         />
         {formData.state === 'Empty' && (
@@ -174,7 +174,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
 
       {/* Fermenting Start Date field */}
       <div>
-        <label htmlFor="fermentingStartDate" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="fermentingStartDate" className="block text-base font-medium text-gray-700 mb-1">
           Fermenting Start Date
         </label>
         <input
@@ -182,7 +182,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
           id="fermentingStartDate"
           value={formatDateForInput(formData.fermentingStartDate)}
           onChange={(e) => handleFieldChange('fermentingStartDate', e.target.value ? new Date(e.target.value) : null)}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
           disabled={isSubmitting || formData.state === 'Empty'}
         />
         {formData.state === 'Empty' && (
@@ -192,7 +192,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
 
       {/* Image section */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="block text-base font-medium text-gray-700 mb-1">
           Image
         </label>
         <p className="text-xs text-gray-500 mb-2">Optional: Add a photo of your bin</p>
@@ -209,7 +209,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
               type="button"
               onClick={handleRemoveImage}
               disabled={isSubmitting}
-              className="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded text-xs hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+              className="absolute top-2 right-2 bg-red-600 text-white px-3 py-2 rounded-md text-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
             >
               Remove
             </button>
@@ -229,7 +229,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
             />
             <label
               htmlFor="upload-photo"
-              className="block w-full text-center bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer"
+              className="block w-full text-center bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer"
             >
               Upload Photo
             </label>
@@ -247,7 +247,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
             />
             <label
               htmlFor="take-photo"
-              className="block w-full text-center bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer"
+              className="block w-full text-center bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer"
             >
               Take Photo
             </label>
@@ -259,7 +259,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+        className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
       >
         {isSubmitting ? 'Creating...' : submitLabel}
       </button>

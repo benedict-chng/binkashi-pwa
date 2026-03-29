@@ -1,16 +1,30 @@
 import { useState } from 'react';
 import { useBins } from '../hooks/useBins';
+import { useBinActions } from '../hooks/useBinActions';
 import { BinCard } from './BinCard';
 import { ImageModal } from './ImageModal';
+import { useToast } from './Toast';
 import type { SortField } from '../types/bin';
 
 export function BinList() {
   const [sortBy, setSortBy] = useState<SortField>('createdAt');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const bins = useBins(sortBy);
+  const { deleteBin } = useBinActions();
+  const { showToast } = useToast();
 
   const handleImageClick = (imageUrl: string) => {
     setSelectedImage(imageUrl);
+  };
+
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteBin(Number(id));
+      showToast('Bin deleted successfully', 'success');
+    } catch (error) {
+      console.error('Failed to delete bin:', error);
+      showToast('Failed to delete bin', 'error');
+    }
   };
 
   const handleCloseModal = () => {
@@ -41,7 +55,7 @@ export function BinList() {
             id="sort"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as SortField)}
-            className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
           >
             <option value="name">Name</option>
             <option value="state">State</option>
@@ -52,9 +66,9 @@ export function BinList() {
       </div>
 
       {/* Bin grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {bins.map((bin) => (
-          <BinCard key={bin.id} bin={bin} onImageClick={handleImageClick} />
+          <BinCard key={bin.id} bin={bin} onImageClick={handleImageClick} onDelete={handleDelete} />
         ))}
       </div>
 

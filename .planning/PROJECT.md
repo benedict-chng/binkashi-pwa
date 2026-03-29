@@ -12,20 +12,16 @@ Users can quickly add and update bokashi compost bins on their phone without an 
 
 ### Validated
 
-(None yet — ship to validate)
-
-### Active
-
-- [ ] User can create bins with name, state, dates, and image
-- [ ] User can view all bins in a list with thumbnails
-- [ ] User can edit existing bins
-- [ ] User can transition bins through valid states (Empty → In Use → Fermenting → Empty)
-- [ ] User can capture bin images via camera or file picker
-- [ ] App works offline (PWA with service worker)
+- [x] User can create bins with name, state, dates, and image — Validated in Phase 2: Image Handling & User Interface
+- [x] User can view all bins in a list with thumbnails — Validated in Phase 2: Image Handling & User Interface
+- [x] User can edit existing bins — Validated in Phase 1: PWA Foundation & Core Bin Management
+- [x] User can transition bins through valid states (Empty → In Use → Fermenting → Empty) — Validated in Phase 1: PWA Foundation & Core Bin Management
+- [x] User can capture bin images via camera or file picker — Validated in Phase 2: Image Handling & User Interface
+- [x] App works offline (PWA with service worker) — Validated in Phase 1: PWA Foundation & Core Bin Management
 - [ ] User can export all bin data to JSON
 - [ ] User can import bin data from JSON
-- [ ] Data persists across sessions (IndexedDB via Dexie.js)
-- [ ] App is installable on mobile devices
+- [x] Data persists across sessions (IndexedDB via Dexie.js) — Validated in Phase 1: PWA Foundation & Core Bin Management
+- [ ] App is installable on mobile devices (requires PNG icons in vite.config.ts)
 
 ### Out of Scope
 
@@ -52,10 +48,12 @@ Bokashi composting involves managing multiple bins at different stages. The curr
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Dexie.js for IndexedDB | Simplifies IndexedDB with Promise-based API, better developer experience than raw IndexedDB | — Pending |
-| Vite over Create React App | Faster build, better DX, built-in PWA plugin support, modern tooling | — Pending |
-| PWA over native app | Can be installed on mobile, offline support, no app store approval needed, web tech | — Pending |
-| JSON export/import (not backup services) | Simple data portability, user controls their data, no cloud dependencies | — Pending |
+| Dexie.js for IndexedDB | Simplifies IndexedDB with Promise-based API, better developer experience than raw IndexedDB | Validated — database schema created with bins table, Blob storage working |
+| Vite over Create React App | Faster build, better DX, built-in PWA plugin support, modern tooling | Validated — dev server, build pipeline, HMR working, 419ms build time |
+| PWA over native app | Can be installed on mobile, offline support, no app store approval needed, web tech | Validated — service worker caching assets, manifest generated, requires PNG icons for installability |
+| JSON export/import (not backup services) | Simple data portability, user controls their data, no cloud dependencies | Deferred to Phase 3: Polish & User Experience |
+| HTML5 File API for image capture | Native browser API, no external libraries needed, works offline | Validated — camera and file upload working, Blob storage in IndexedDB |
+| URL.createObjectURL for image display | Efficient Blob-to-URL conversion, no base64 overhead | Validated — thumbnails and modal working with memory leak protection |
 
 ## Evolution
 
@@ -75,4 +73,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2025-03-29 after initialization*
+*Last updated: 2026-03-29 after Phase 2 completion*

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { BinFormData, BinState } from '../types/bin';
 import { BIN_STATES, getStateLabel } from '../types/bin';
 import { useBinActions } from '../hooks/useBinActions';
@@ -19,10 +19,23 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
     state: 'Empty',
     inUseStartDate: null,
     fermentingStartDate: null,
+    image: null,
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+
+  // Handle image preview from initialData (for edit mode)
+  useEffect(() => {
+    if (initialData?.image) {
+      const previewUrl = URL.createObjectURL(initialData.image);
+      setImagePreview(previewUrl);
+      return () => {
+        URL.revokeObjectURL(previewUrl);
+      };
+    }
+  }, [initialData?.image]);
 
   const handleFieldChange = (field: keyof BinFormData, value: any) => {
     // Handle state transition when state changes
@@ -34,6 +47,23 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
     }
 
     setFormData({ ...formData, [field]: value });
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const previewUrl = URL.createObjectURL(file);
+      setImagePreview(previewUrl);
+      setFormData({ ...formData, image: file });
+    }
+  };
+
+  const handleRemoveImage = () => {
+    if (imagePreview) {
+      URL.revokeObjectURL(imagePreview);
+    }
+    setImagePreview(null);
+    setFormData({ ...formData, image: null });
   };
 
   const validate = (): boolean => {
@@ -61,6 +91,11 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
     setIsSubmitting(true);
     try {
       await createBin(formData);
+      // Clear image preview after successful submission
+      if (imagePreview) {
+        URL.revokeObjectURL(imagePreview);
+        setImagePreview(null);
+      }
       onSubmit(formData);
     } catch (error) {
       console.error('Failed to create bin:', error);
@@ -148,6 +183,71 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
         {formData.state === 'Empty' && (
           <p className="text-xs text-gray-500 mt-1">Cleared when state is Empty</p>
         )}
+      </div>
+
+      {/* Image section */}
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Image
+        </label>
+        <p className="text-xs text-gray-500 mb-2">Optional: Add a photo of your bin</p>
+
+        {/* Image preview */}
+        {imagePreview && (
+          <div className="mb-3 relative">
+            <img
+              src={imagePreview}
+              alt="Bin preview"
+              className="max-w-full h-48 object-cover rounded-md border border-gray-300"
+            />
+            <button
+              type="button"
+              onClick={handleRemoveImage}
+              disabled={isSubmitting}
+              className="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded text-xs hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+            >
+              Remove
+            </button>
+          </div>
+        )}
+
+        {/* Image upload buttons */}
+        <div className="flex gap-2">
+          <div className="flex-1">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              disabled={isSubmitting}
+              className="hidden"
+              id="upload-photo"
+            />
+            <label
+              htmlFor="upload-photo"
+              className="block w-full text-center bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer"
+            >
+              Upload Photo
+            </label>
+          </div>
+
+          <div className="flex-1">
+            <input
+              type="file"
+              accept="image/*"
+              capture="environment"
+              onChange={handleFileChange}
+              disabled={isSubmitting}
+              className="hidden"
+              id="take-photo"
+            />
+            <label
+              htmlFor="take-photo"
+              className="block w-full text-center bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer"
+            >
+              Take Photo
+            </label>
+          </div>
+        </div>
       </div>
 
       {/* Submit button */}

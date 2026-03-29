@@ -91,7 +91,13 @@ Plan list:
 4. App works reliably across different browsers (Chrome, Safari, Edge) on mobile and desktop
 5. User interface feels polished with consistent spacing, typography, and visual hierarchy
 
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plan list:
+- [ ] 03-01-PLAN.md — Error handling & edge cases
+- [ ] 03-02-PLAN.md — Performance & cross-browser support
+- [ ] 03-03-PLAN.md — Visual polish & UX refinements
+- [ ] 03-04-PLAN.md — End-to-end testing & documentation
 **UI hint**: yes
 
 ## Progress
@@ -100,7 +106,7 @@ Plan list:
 |-------|----------------|--------|-----------|
 | 1. PWA Foundation & Core Bin Management | 0/3 | Complete    | 2026-03-29 |
 | 2. Image Handling & User Interface | 3/3 | Complete    | 2026-03-29 |
-| 3. Polish & User Experience | 0/0 | Not started | - |
+| 3. Polish & User Experience | 0/4 | Not started | - |
 
 ## Coverage
 

@@ -108,7 +108,7 @@ export function BinCard({ bin, onImageClick, onDelete }: BinCardProps) {
           {onDelete && (
             <button
               onClick={handleDeleteClick}
-              className="absolute top-2 right-2 bg-red-600 text-white p-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors"
+              className="absolute top-2 right-2 bg-red-600 text-white p-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Delete bin"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

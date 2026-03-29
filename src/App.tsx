@@ -26,6 +26,15 @@ function AppContent() {
     // Listen for custom event dispatched by vite-plugin-pwa
     window.addEventListener('swUpdate', handleUpdate);
 
+    // Check if service worker is supported
+    if (!('serviceWorker' in navigator)) {
+      console.warn('Service workers are not supported in this browser');
+      // Show a toast to inform the user
+      setTimeout(() => {
+        showToast('PWA features may be limited in this browser', 'info');
+      }, 1000);
+    }
+
     return () => {
       window.removeEventListener('swUpdate', handleUpdate);
     };

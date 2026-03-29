@@ -44,14 +44,14 @@ function AppContent() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
           <h1 className="text-3xl font-bold text-green-600">Binkashi</h1>
           <AddBinButton />
         </div>
       </header>
 
       {/* Main content */}
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Routes>
           <Route path="/" element={<BinList />} />
           <Route path="/bins/new" element={<CreateBinPage />} />
@@ -65,7 +65,7 @@ function AddBinButton() {
   return (
     <Link
       to="/bins/new"
-      className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition-colors text-lg"
+      className="btn-primary bg-green-600 text-white px-6 py-3 rounded-md text-base font-medium"
     >
       + Add Bin
     </Link>
@@ -82,15 +82,15 @@ function CreateBinPage() {
   };
 
   return (
-    <div className="w-full max-w-lg mx-auto px-4">
+    <div className="w-full max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
       <button
         onClick={() => navigate('/')}
-        className="text-gray-600 hover:text-gray-900 mb-4"
+        className="text-gray-600 hover:text-gray-900 mb-4 font-medium transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded-md px-2 py-1"
       >
         ← Back to List
       </button>
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Create New Bin</h2>
+      <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 leading-tight">Create New Bin</h2>
         <BinForm onSubmit={handleSubmit} />
       </div>
     </div>

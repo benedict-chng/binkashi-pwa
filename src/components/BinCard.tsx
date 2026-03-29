@@ -79,7 +79,7 @@ export function BinCard({ bin, onImageClick, onDelete }: BinCardProps) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+    <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover">
       {bin.image && (
         <div className="relative">
           {/* Image container */}
@@ -101,7 +101,7 @@ export function BinCard({ bin, onImageClick, onDelete }: BinCardProps) {
               src={imageUrl}
               alt={bin.name}
               loading="lazy"
-              className={`w-full h-48 object-cover cursor-pointer hover:scale-[1.02] transition-transform ${
+              className={`w-full h-48 object-cover cursor-pointer hover:scale-[1.02] transition-transform duration-300 ease-in-out ${
                 !imageLoaded ? 'opacity-0' : 'opacity-100'
               }`}
               onClick={() => onImageClick?.(imageUrl)}
@@ -113,7 +113,7 @@ export function BinCard({ bin, onImageClick, onDelete }: BinCardProps) {
           {onDelete && (
             <button
               onClick={handleDeleteClick}
-              className="absolute top-2 right-2 bg-red-600 text-white p-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="absolute top-2 right-2 bg-red-600 text-white p-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Delete bin"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -123,13 +123,13 @@ export function BinCard({ bin, onImageClick, onDelete }: BinCardProps) {
           )}
         </div>
       )}
-      <div className="p-4">
-        <h3 className="text-xl font-semibold text-gray-900 mb-3">{bin.name}</h3>
+      <div className="p-6">
+        <h3 className="text-xl font-semibold text-gray-900 mb-4 leading-tight">{bin.name}</h3>
 
-      <div className="space-y-2 text-sm">
+      <div className="space-y-3 text-sm">
         <div className="flex justify-between">
-          <span className="text-gray-600">State:</span>
-          <span className={`font-medium ${
+          <span className="text-gray-600 font-medium">State:</span>
+          <span className={`font-semibold ${
             bin.state === 'Empty' ? 'text-gray-500' :
             bin.state === 'In Use' ? 'text-blue-600' :
             'text-green-600'
@@ -139,12 +139,12 @@ export function BinCard({ bin, onImageClick, onDelete }: BinCardProps) {
         </div>
 
         <div className="flex justify-between">
-          <span className="text-gray-600">In Use Since:</span>
+          <span className="text-gray-600 font-medium">In Use Since:</span>
           <span className="text-gray-700">{formatBinDate(bin.inUseStartDate)}</span>
         </div>
 
         <div className="flex justify-between">
-          <span className="text-gray-600">Fermenting Since:</span>
+          <span className="text-gray-600 font-medium">Fermenting Since:</span>
           <span className="text-gray-700">{formatBinDate(bin.fermentingStartDate)}</span>
         </div>
       </div>

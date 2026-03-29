@@ -57,17 +57,17 @@ export function BinList() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Sorting controls */}
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">My Bins</h2>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h2 className="text-2xl font-bold text-gray-900 leading-tight">My Bins</h2>
         <div className="flex items-center gap-2">
-          <label htmlFor="sort" className="text-sm text-gray-600">Sort by:</label>
+          <label htmlFor="sort" className="text-sm text-gray-600 font-medium">Sort by:</label>
           <select
             id="sort"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as SortField)}
-            className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 input-base"
           >
             <option value="name">Name</option>
             <option value="state">State</option>

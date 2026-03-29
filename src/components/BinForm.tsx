@@ -145,10 +145,10 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-6">
       {/* Name field */}
       <div>
-        <label htmlFor="name" className="block text-base font-medium text-gray-700 mb-1">
+        <label htmlFor="name" className="block text-base font-medium text-gray-700 mb-2">
           Name *
         </label>
         <input
@@ -157,24 +157,26 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
           value={formData.name}
           onChange={(e) => handleFieldChange('name', e.target.value)}
           placeholder="e.g., Kitchen Bin"
-          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 ${
+          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 input-base ${
             errors.name ? 'border-red-500' : 'border-gray-300'
           }`}
           disabled={isSubmitting}
+          aria-invalid={errors.name ? 'true' : 'false'}
+          aria-describedby={errors.name ? 'name-error' : undefined}
         />
-        {errors.name && <p className="text-sm text-red-500 mt-1">{errors.name}</p>}
+        {errors.name && <p id="name-error" className="text-sm text-red-500 mt-1">{errors.name}</p>}
       </div>
 
       {/* State field */}
       <div>
-        <label htmlFor="state" className="block text-base font-medium text-gray-700 mb-1">
+        <label htmlFor="state" className="block text-base font-medium text-gray-700 mb-2">
           State
         </label>
         <select
           id="state"
           value={formData.state}
           onChange={(e) => handleFieldChange('state', e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 input-base"
           disabled={isSubmitting}
         >
           {BIN_STATES.map((state) => (
@@ -183,14 +185,14 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
             </option>
           ))}
         </select>
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="text-xs text-gray-500 mt-2 leading-relaxed">
           Changing state may auto-set or clear dates
         </p>
       </div>
 
       {/* In Use Start Date field */}
       <div>
-        <label htmlFor="inUseStartDate" className="block text-base font-medium text-gray-700 mb-1">
+        <label htmlFor="inUseStartDate" className="block text-base font-medium text-gray-700 mb-2">
           In Use Start Date
         </label>
         <input
@@ -198,17 +200,17 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
           id="inUseStartDate"
           value={formatDateForInput(formData.inUseStartDate)}
           onChange={(e) => handleFieldChange('inUseStartDate', e.target.value ? new Date(e.target.value) : null)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 input-base"
           disabled={isSubmitting}
         />
         {formData.state === 'Empty' && (
-          <p className="text-xs text-gray-500 mt-1">Date will be cleared when state changes to Empty</p>
+          <p className="text-xs text-gray-500 mt-2">Date will be cleared when state changes to Empty</p>
         )}
       </div>
 
       {/* Fermenting Start Date field */}
       <div>
-        <label htmlFor="fermentingStartDate" className="block text-base font-medium text-gray-700 mb-1">
+        <label htmlFor="fermentingStartDate" className="block text-base font-medium text-gray-700 mb-2">
           Fermenting Start Date
         </label>
         <input
@@ -216,20 +218,20 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
           id="fermentingStartDate"
           value={formatDateForInput(formData.fermentingStartDate)}
           onChange={(e) => handleFieldChange('fermentingStartDate', e.target.value ? new Date(e.target.value) : null)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 input-base"
           disabled={isSubmitting}
         />
         {formData.state === 'Empty' && (
-          <p className="text-xs text-gray-500 mt-1">Date will be cleared when state changes to Empty</p>
+          <p className="text-xs text-gray-500 mt-2">Date will be cleared when state changes to Empty</p>
         )}
       </div>
 
       {/* Image section */}
       <div>
-        <label className="block text-base font-medium text-gray-700 mb-1">
+        <label className="block text-base font-medium text-gray-700 mb-2">
           Image
         </label>
-        <p className="text-xs text-gray-500 mb-2">Optional: Add a photo of your bin</p>
+        <p className="text-xs text-gray-500 mb-3 leading-relaxed">Optional: Add a photo of your bin</p>
 
         {/* Image preview */}
         {imagePreview && (
@@ -243,7 +245,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
               type="button"
               onClick={handleRemoveImage}
               disabled={isSubmitting || isCompressing}
-              className="absolute top-2 right-2 bg-red-600 text-white px-3 py-2 rounded-md text-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+              className="absolute top-2 right-2 bg-red-600 text-white px-3 py-2 rounded-md text-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors min-w-[44px] min-h-[44px]"
             >
               Remove
             </button>
@@ -251,7 +253,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
         )}
 
         {/* Image upload buttons */}
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <div className="flex-1">
             <input
               type="file"
@@ -263,7 +265,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
             />
             <label
               htmlFor="upload-photo"
-              className={`block w-full text-center bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer ${
+              className={`block w-full text-center bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer ${
                 isCompressing ? 'opacity-75' : ''
               }`}
             >
@@ -283,7 +285,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
             />
             <label
               htmlFor="take-photo"
-              className={`block w-full text-center bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer ${
+              className={`block w-full text-center bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer ${
                 isCompressing ? 'opacity-75' : ''
               }`}
             >
@@ -297,7 +299,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
       <button
         type="submit"
         disabled={isSubmitting || isCompressing}
-        className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+        className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed btn-primary"
       >
         {isSubmitting ? 'Creating...' : submitLabel}
       </button>

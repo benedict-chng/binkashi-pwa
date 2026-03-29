@@ -11,8 +11,8 @@ export function useBins(sortField: SortField = 'createdAt') {
       if (sortField === 'inUseStartDate' || sortField === 'fermentingStartDate') {
         return query.toArray().then(bins =>
           bins.sort((a, b) => {
-            const aVal = a[sortField] ? new Date(a[sortField]!).getTime() : 0;
-            const bVal = b[sortField] ? new Date(b[sortField]!).getTime() : 0;
+            const aVal = a[sortField] ? new Date(a[sortField]!).getTime() : -Infinity;
+            const bVal = b[sortField] ? new Date(b[sortField]!).getTime() : -Infinity;
             return bVal - aVal; // Descending (newest first)
           })
         );

@@ -24,7 +24,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **IMG-01**: User can capture bin image via device camera
 - [x] **IMG-02**: User can upload bin image from file picker
-- [ ] **IMG-03**: User can view full-size bin image when viewing bin details
+- [x] **IMG-03**: User can view full-size bin image when viewing bin details
 
 ### Persistence & Offline
 
@@ -108,7 +108,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | STATE-04 | Phase 1 | Complete |
 | IMG-01 | Phase 2 | Complete |
 | IMG-02 | Phase 2 | Complete |
-| IMG-03 | Phase 2 | Pending |
+| IMG-03 | Phase 2 | Complete |
 | UI-01 | Phase 2 | Pending |
 | UI-02 | Phase 2 | Pending |
 | UI-03 | Phase 2 | Pending |

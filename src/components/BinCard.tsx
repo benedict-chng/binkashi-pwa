@@ -19,7 +19,7 @@ export function BinCard({ bin, onImageClick, onDelete }: BinCardProps) {
     // Check if browser supports native lazy loading
     const supportsLazyLoading = 'loading' in HTMLImageElement.prototype;
 
-    if (bin.image && supportsLazyLoading) {
+    if (bin.image && !imageUrl && supportsLazyLoading) {
       // Native lazy loading is supported, load image immediately
       // The browser will handle lazy loading via loading="lazy" attribute
       const url = URL.createObjectURL(bin.image);
@@ -28,7 +28,7 @@ export function BinCard({ bin, onImageClick, onDelete }: BinCardProps) {
       return () => {
         URL.revokeObjectURL(url);
       };
-    } else if (bin.image && !supportsLazyLoading) {
+    } else if (bin.image && !imageUrl && !supportsLazyLoading) {
       // Use IntersectionObserver for browsers without native lazy loading (e.g., Safari < 15.4)
       if (!imageRef.current) {
         return;
@@ -52,12 +52,9 @@ export function BinCard({ bin, onImageClick, onDelete }: BinCardProps) {
 
       return () => {
         observer.disconnect();
-        if (imageUrl) {
-          URL.revokeObjectURL(imageUrl);
-        }
       };
     }
-  }, [bin.image, imageUrl]);
+  }, [bin.image]);
 
   const handleDeleteClick = (e: React.MouseEvent) => {
     e.stopPropagation();

@@ -165,10 +165,10 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
           value={formatDateForInput(formData.inUseStartDate)}
           onChange={(e) => handleFieldChange('inUseStartDate', e.target.value ? new Date(e.target.value) : null)}
           className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-          disabled={isSubmitting || formData.state === 'Empty'}
+          disabled={isSubmitting}
         />
         {formData.state === 'Empty' && (
-          <p className="text-xs text-gray-500 mt-1">Cleared when state is Empty</p>
+          <p className="text-xs text-gray-500 mt-1">Date will be cleared when state changes to Empty</p>
         )}
       </div>
 
@@ -183,10 +183,10 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
           value={formatDateForInput(formData.fermentingStartDate)}
           onChange={(e) => handleFieldChange('fermentingStartDate', e.target.value ? new Date(e.target.value) : null)}
           className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-          disabled={isSubmitting || formData.state === 'Empty'}
+          disabled={isSubmitting}
         />
         {formData.state === 'Empty' && (
-          <p className="text-xs text-gray-500 mt-1">Cleared when state is Empty</p>
+          <p className="text-xs text-gray-500 mt-1">Date will be cleared when state changes to Empty</p>
         )}
       </div>
 

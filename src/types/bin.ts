@@ -29,9 +29,9 @@ export const getStateLabel = (state: BinState): string => {
 
 export const formatBinDate = (date: Date | null): string => {
   if (!date) return 'Not set';
-  return new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  }).format(new Date(date));
+  const d = new Date(date);
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year = d.getFullYear();
+  return `${day}/${month}/${year}`;
 };

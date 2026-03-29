@@ -5,7 +5,7 @@ import { useBinActions } from '../hooks/useBinActions';
 import { handleStateTransition } from '../hooks/useStateTransitions';
 import { formatDateForInput } from '../utils/dates';
 import { useToast } from './Toast';
-import { handleCameraError, handleStorageError } from '../utils/errors';
+import { handleCameraError } from '../utils/errors';
 
 interface BinFormProps {
   onSubmit: (data: BinFormData) => void;

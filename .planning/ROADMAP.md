@@ -95,7 +95,7 @@ Plan list:
 
 Plan list:
 - [x] 03-01-PLAN.md — Error handling & edge cases
-- [ ] 03-02-PLAN.md — Performance & cross-browser support
+- [x] 03-02-PLAN.md — Performance & cross-browser support
 - [ ] 03-03-PLAN.md — Visual polish & UX refinements
 - [ ] 03-04-PLAN.md — End-to-end testing & documentation
 **UI hint**: yes

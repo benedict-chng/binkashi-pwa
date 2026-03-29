@@ -63,7 +63,7 @@ body {
 
 /* Backdrop blur transition */
 .backdrop-blur-transition {
-  @apply transition-backdrop-blur duration-300 ease-in-out;
+  transition: backdrop-filter 300ms ease-in-out;
 }
 
 /* Toast animations */

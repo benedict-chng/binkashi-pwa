@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useBins } from '../hooks/useBins';
 import { useBinActions } from '../hooks/useBinActions';
 import { BinCard } from './BinCard';
 import { ImageModal } from './ImageModal';
+import { EmptyState } from './EmptyState';
 import { useToast } from './Toast';
 import type { SortField } from '../types/bin';
 
@@ -37,10 +39,19 @@ export function BinList() {
 
   if (bins.length === 0) {
     return (
-      <div className="text-center py-12">
-        <p className="text-gray-500 text-lg mb-4">No bins yet</p>
-        <p className="text-gray-400 text-sm">Create your first bin to get started</p>
-      </div>
+      <EmptyState
+        icon={<span role="img" aria-label="Compost bin">🗑️</span>}
+        title="No bins yet"
+        message="Create your first bin to get started"
+        action={
+          <Link
+            to="/bins/new"
+            className="btn-primary bg-green-600 text-white px-6 py-3 rounded-md text-base font-medium"
+          >
+            Create First Bin
+          </Link>
+        }
+      />
     );
   }
 

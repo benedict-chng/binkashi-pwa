@@ -17,9 +17,9 @@ export function BinList() {
     setSelectedImage(imageUrl);
   };
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async (id: number) => {
     try {
-      await deleteBin(Number(id));
+      await deleteBin(id);
       showToast('Bin deleted successfully', 'success');
     } catch (error) {
       console.error('Failed to delete bin:', error);

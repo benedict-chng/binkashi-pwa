@@ -5,7 +5,7 @@ import { getStateLabel, formatBinDate } from '../types/bin';
 interface BinCardProps {
   bin: Bin;
   onImageClick?: (imageUrl: string) => void;
-  onDelete?: (id: string) => void;
+  onDelete?: (id: number) => void;
 }
 
 export function BinCard({ bin, onImageClick, onDelete }: BinCardProps) {
@@ -25,7 +25,9 @@ export function BinCard({ bin, onImageClick, onDelete }: BinCardProps) {
   const handleDeleteClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (window.confirm(`Are you sure you want to delete "${bin.name}"?`)) {
-      onDelete?.(bin.id);
+      if (bin.id !== undefined) {
+        onDelete?.(bin.id);
+      }
     }
   };
 

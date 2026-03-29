@@ -28,10 +28,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Persistence & Offline
 
-- [ ] **PERS-01**: Bin data persists across app restarts and browser sessions
-- [ ] **PERS-02**: App loads and functions without internet connection after initial visit
-- [ ] **PERS-03**: App can be installed on mobile device via PWA install prompt
-- [ ] **PERS-04**: App caches static assets for offline use
+- [x] **PERS-01**: Bin data persists across app restarts and browser sessions
+- [x] **PERS-02**: App loads and functions without internet connection after initial visit
+- [x] **PERS-03**: App can be installed on mobile device via PWA install prompt
+- [x] **PERS-04**: App caches static assets for offline use
 
 ### User Interface
 
@@ -95,10 +95,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PERS-01 | Phase 1 | Pending |
-| PERS-02 | Phase 1 | Pending |
-| PERS-03 | Phase 1 | Pending |
-| PERS-04 | Phase 1 | Pending |
+| PERS-01 | Phase 1 | Complete |
+| PERS-02 | Phase 1 | Complete |
+| PERS-03 | Phase 1 | Complete |
+| PERS-04 | Phase 1 | Complete |
 | BIN-01 | Phase 1 | Pending |
 | BIN-02 | Phase 1 | Pending |
 | BIN-03 | Phase 1 | Pending |

@@ -41,7 +41,7 @@
 **Plans**: 3 plans
 
 Plan list:
-- [ ] 01-01-PLAN.md — Foundation setup (Vite, React, TypeScript, PWA, Dexie)
+- [x] 01-01-PLAN.md — Foundation setup (Vite, React, TypeScript, PWA, Dexie)
 - [ ] 01-02-PLAN.md — Bin types, data layer, and list component
 - [ ] 01-03-PLAN.md — Bin forms, routing, and state transitions
 

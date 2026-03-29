@@ -6,7 +6,7 @@ export interface Bin extends DBBin {
   state: BinState;
 }
 
-export type SortField = 'name' | 'state' | 'inUseStartDate' | 'fermentingStartDate';
+export type SortField = 'name' | 'state' | 'createdAt' | 'inUseStartDate' | 'fermentingStartDate';
 
 export interface BinFormData {
   name: string;

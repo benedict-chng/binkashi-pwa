@@ -6,7 +6,7 @@
 
 ## Phases
 
-- [ ] **Phase 1: PWA Foundation & Core Bin Management** - Offline-capable app with bin CRUD and state transitions
+- [x] **Phase 1: PWA Foundation & Core Bin Management** - Offline-capable app with bin CRUD and state transitions (completed 2026-03-29)
 - [ ] **Phase 2: Image Handling & User Interface** - Camera capture, image display, and responsive mobile-first UI
 - [ ] **Phase 3: Polish & User Experience** - Visual feedback refinements and edge case handling
 
@@ -93,7 +93,7 @@ Plan list:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. PWA Foundation & Core Bin Management | 0/3 | Planned | - |
+| 1. PWA Foundation & Core Bin Management | 0/3 | Complete    | 2026-03-29 |
 | 2. Image Handling & User Interface | 0/0 | Not started | - |
 | 3. Polish & User Experience | 0/0 | Not started | - |
 

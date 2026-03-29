@@ -66,7 +66,12 @@ Plan list:
 4. User can use the app comfortably on phone, tablet, or desktop with readable text and touch-friendly controls
 5. User sees clear feedback (loading states, success messages, error alerts) for all interactions
 
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plan list:
+- [ ] 02-01-PLAN.md — Image capture & storage (camera, file upload, Blob storage)
+- [ ] 02-02-PLAN.md — Image display & thumbnails (BinCard thumbnails, ImageModal)
+- [ ] 02-03-PLAN.md — Responsive UI & visual feedback (touch targets, toast notifications)
 **UI hint**: yes
 
 ### Phase 3: Polish & User Experience

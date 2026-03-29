@@ -1,11 +1,21 @@
 import { useState } from 'react';
 import { useBins } from '../hooks/useBins';
 import { BinCard } from './BinCard';
+import { ImageModal } from './ImageModal';
 import type { SortField } from '../types/bin';
 
 export function BinList() {
   const [sortBy, setSortBy] = useState<SortField>('createdAt');
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const bins = useBins(sortBy);
+
+  const handleImageClick = (imageUrl: string) => {
+    setSelectedImage(imageUrl);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedImage(null);
+  };
 
   if (bins === undefined) {
     return <div className="text-center text-gray-500 py-8">Loading bins...</div>;
@@ -44,9 +54,12 @@ export function BinList() {
       {/* Bin grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {bins.map((bin) => (
-          <BinCard key={bin.id} bin={bin} />
+          <BinCard key={bin.id} bin={bin} onImageClick={handleImageClick} />
         ))}
       </div>
+
+      {/* Image modal */}
+      <ImageModal imageUrl={selectedImage} onClose={handleCloseModal} />
     </div>
   );
 }

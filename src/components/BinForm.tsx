@@ -6,6 +6,7 @@ import { handleStateTransition } from '../hooks/useStateTransitions';
 import { formatDateForInput } from '../utils/dates';
 import { compressImage } from '../utils/imageCompression';
 import { useToast } from './Toast';
+import { LoadingState } from './LoadingState';
 import { handleCameraError } from '../utils/errors';
 
 interface BinFormProps {
@@ -300,6 +301,13 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
       >
         {isSubmitting ? 'Creating...' : submitLabel}
       </button>
+
+      {/* Loading state during submission */}
+      {isSubmitting && (
+        <div className="modal-fade-in">
+          <LoadingState message="Saving..." size="small" />
+        </div>
+      )}
     </form>
   );
 }

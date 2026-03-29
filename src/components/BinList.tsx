@@ -5,6 +5,7 @@ import { useBinActions } from '../hooks/useBinActions';
 import { BinCard } from './BinCard';
 import { ImageModal } from './ImageModal';
 import { EmptyState } from './EmptyState';
+import { LoadingState } from './LoadingState';
 import { useToast } from './Toast';
 import type { SortField } from '../types/bin';
 
@@ -34,7 +35,7 @@ export function BinList() {
   };
 
   if (bins === undefined) {
-    return <div className="text-center text-gray-500 py-8">Loading bins...</div>;
+    return <LoadingState message="Loading bins..." size="medium" />;
   }
 
   if (bins.length === 0) {

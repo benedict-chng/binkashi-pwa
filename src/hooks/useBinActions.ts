@@ -12,6 +12,7 @@ export function useBinActions() {
       state: data.state,
       inUseStartDate: data.inUseStartDate,
       fermentingStartDate: data.fermentingStartDate,
+      image: data.image as Blob | null,
       createdAt: now,
       updatedAt: now,
     });
@@ -28,6 +29,7 @@ export function useBinActions() {
       ...(data.state && { state: data.state }),
       ...(data.inUseStartDate !== undefined && { inUseStartDate: data.inUseStartDate }),
       ...(data.fermentingStartDate !== undefined && { fermentingStartDate: data.fermentingStartDate }),
+      ...(data.image !== undefined && { image: data.image as Blob | null }),
       updatedAt: now,
     });
   };

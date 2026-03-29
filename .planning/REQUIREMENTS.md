@@ -95,29 +95,34 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
+| PERS-01 | Phase 1 | Pending |
 | PERS-02 | Phase 1 | Pending |
 | PERS-03 | Phase 1 | Pending |
 | PERS-04 | Phase 1 | Pending |
-| PERS-01 | Phase 2 | Pending |
-| BIN-01 | Phase 2 | Pending |
-| BIN-02 | Phase 2 | Pending |
-| BIN-03 | Phase 2 | Pending |
-| STATE-01 | Phase 2 | Pending |
-| STATE-02 | Phase 2 | Pending |
-| STATE-03 | Phase 2 | Pending |
-| STATE-04 | Phase 2 | Pending |
-| IMG-01 | Phase 3 | Pending |
-| IMG-02 | Phase 3 | Pending |
-| IMG-03 | Phase 3 | Pending |
-| UI-01 | Phase 3 | Pending |
-| UI-02 | Phase 3 | Pending |
-| UI-03 | Phase 3 | Pending |
+| BIN-01 | Phase 1 | Pending |
+| BIN-02 | Phase 1 | Pending |
+| BIN-03 | Phase 1 | Pending |
+| STATE-01 | Phase 1 | Pending |
+| STATE-02 | Phase 1 | Pending |
+| STATE-03 | Phase 1 | Pending |
+| STATE-04 | Phase 1 | Pending |
+| IMG-01 | Phase 2 | Pending |
+| IMG-02 | Phase 2 | Pending |
+| IMG-03 | Phase 2 | Pending |
+| UI-01 | Phase 2 | Pending |
+| UI-02 | Phase 2 | Pending |
+| UI-03 | Phase 2 | Pending |
 
 **Coverage:**
 - v1 requirements: 17 total
 - Mapped to phases: 17
 - Unmapped: 0 ✓
 
+**Phase Distribution:**
+- Phase 1 (PWA Foundation & Core Bin Management): 11 requirements
+- Phase 2 (Image Handling & User Interface): 6 requirements
+- Phase 3 (Polish & User Experience): Integration and polish
+
 ---
 *Requirements defined: 2025-03-29*
-*Last updated: 2025-03-29 after initial definition*
+*Last updated: 2025-03-29 after roadmap creation*

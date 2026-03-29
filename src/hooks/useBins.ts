@@ -5,21 +5,29 @@ import type { Bin, SortField } from '../types/bin';
 export function useBins(sortField: SortField = 'createdAt') {
   return useLiveQuery(
     () => {
-      let query = db.bins.orderBy(sortField);
-
-      // Handle null dates (they should sort last)
-      if (sortField === 'inUseStartDate' || sortField === 'fermentingStartDate') {
-        return query.toArray().then(bins =>
-          bins.sort((a, b) => {
+      // Always fetch all bins and sort in-memory to ensure consistent behavior
+      return db.bins.toArray().then(bins => {
+        // Handle null dates (they should sort last)
+        if (sortField === 'inUseStartDate' || sortField === 'fermentingStartDate') {
+          return bins.sort((a, b) => {
             const aVal = a[sortField] ? new Date(a[sortField]!).getTime() : -Infinity;
             const bVal = b[sortField] ? new Date(b[sortField]!).getTime() : -Infinity;
             return bVal - aVal; // Descending (newest first)
-          })
-        );
-      }
+          });
+        }
 
-      // Default: ascending for strings and other fields
-      return query.toArray();
+        // Sort by name or state (case-insensitive for strings)
+        if (sortField === 'name') {
+          return bins.sort((a, b) => a.name.localeCompare(b.name));
+        }
+
+        if (sortField === 'state') {
+          return bins.sort((a, b) => a.state.localeCompare(b.state));
+        }
+
+        // Default: sort by createdAt (ascending - oldest first)
+        return bins.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+      });
     },
     [sortField],
     [] as Bin[]

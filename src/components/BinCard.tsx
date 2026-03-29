@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import type { Bin } from '../types/bin';
 import { getStateLabel, formatBinDate } from '../types/bin';
 
@@ -10,17 +10,49 @@ interface BinCardProps {
 
 export function BinCard({ bin, onImageClick, onDelete }: BinCardProps) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    if (bin.image) {
+    // Check if browser supports native lazy loading
+    const supportsLazyLoading = 'loading' in HTMLImageElement.prototype;
+    const shouldLoadImmediately = supportsLazyLoading || imageRef.current?.isIntersecting;
+
+    if (bin.image && shouldLoadImmediately) {
       const url = URL.createObjectURL(bin.image);
       setImageUrl(url);
 
       return () => {
         URL.revokeObjectURL(url);
       };
+    } else if (bin.image && !supportsLazyLoading && imageRef.current) {
+      // Use IntersectionObserver for browsers without native lazy loading (e.g., Safari < 15.4)
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && bin.image && !imageUrl) {
+              const url = URL.createObjectURL(bin.image);
+              setImageUrl(url);
+              observer.disconnect();
+            }
+          });
+        },
+        { rootMargin: '50px' }
+      );
+
+      observer.observe(imageRef.current);
+      observerRef.current = observer;
+
+      return () => {
+        observer.disconnect();
+        if (imageUrl) {
+          URL.revokeObjectURL(imageUrl);
+        }
+      };
     }
-  }, [bin.image]);
+  }, [bin.image, imageUrl]);
 
   const handleDeleteClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -31,16 +63,48 @@ export function BinCard({ bin, onImageClick, onDelete }: BinCardProps) {
     }
   };
 
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+    setImageError(false);
+  };
+
+  const handleImageError = () => {
+    setImageError(true);
+    setImageLoaded(true); // Mark as loaded to stop showing placeholder
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
-      {imageUrl && (
+      {bin.image && (
         <div className="relative">
-          <img
-            src={imageUrl}
-            alt={bin.name}
-            className="w-full h-48 object-cover cursor-pointer hover:scale-[1.02] transition-transform"
-            onClick={() => onImageClick?.(imageUrl)}
-          />
+          {/* Image container */}
+          {!imageLoaded && (
+            <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-500"></div>
+            </div>
+          )}
+
+          {imageError && (
+            <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
+              <p className="text-gray-500 text-sm">Image failed to load</p>
+            </div>
+          )}
+
+          {imageUrl && (
+            <img
+              ref={imageRef}
+              src={imageUrl}
+              alt={bin.name}
+              loading="lazy"
+              className={`w-full h-48 object-cover cursor-pointer hover:scale-[1.02] transition-transform ${
+                !imageLoaded ? 'opacity-0' : 'opacity-100'
+              }`}
+              onClick={() => onImageClick?.(imageUrl)}
+              onLoad={handleImageLoad}
+              onError={handleImageError}
+            />
+          )}
+
           {onDelete && (
             <button
               onClick={handleDeleteClick}

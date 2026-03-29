@@ -133,6 +133,15 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin' }: B
         URL.revokeObjectURL(imagePreview);
         setImagePreview(null);
       }
+      // Reset form state to default
+      setFormData({
+        name: '',
+        state: 'Empty',
+        inUseStartDate: null,
+        fermentingStartDate: null,
+        image: null,
+      });
+      setErrors({});
       showToast('Bin saved successfully', 'success');
       onSubmit(formData);
     } catch (error) {

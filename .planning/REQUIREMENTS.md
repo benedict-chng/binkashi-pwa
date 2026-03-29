@@ -9,9 +9,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Bin Management
 
-- [ ] **BIN-01**: User can create a bin with name, state, inUseStartDate, fermentingStartDate, and image
-- [ ] **BIN-02**: User can view all bins in a list displaying name, state, dates, and image thumbnail
-- [ ] **BIN-03**: User can sort bins by name, state, inUseStartDate, or fermentingStartDate
+- [x] **BIN-01**: User can create a bin with name, state, inUseStartDate, fermentingStartDate, and image
+- [x] **BIN-02**: User can view all bins in a list displaying name, state, dates, and image thumbnail
+- [x] **BIN-03**: User can sort bins by name, state, inUseStartDate, or fermentingStartDate
 
 ### State Management
 
@@ -99,9 +99,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PERS-02 | Phase 1 | Complete |
 | PERS-03 | Phase 1 | Complete |
 | PERS-04 | Phase 1 | Complete |
-| BIN-01 | Phase 1 | Pending |
-| BIN-02 | Phase 1 | Pending |
-| BIN-03 | Phase 1 | Pending |
+| BIN-01 | Phase 1 | Complete |
+| BIN-02 | Phase 1 | Complete |
+| BIN-03 | Phase 1 | Complete |
 | STATE-01 | Phase 1 | Pending |
 | STATE-02 | Phase 1 | Pending |
 | STATE-03 | Phase 1 | Pending |

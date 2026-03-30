@@ -6,13 +6,68 @@
 
 ## Phases
 
+### v1.1 Milestone (Current)
+
+- [ ] **Phase 4: UI Visual Enhancements** - Apply new colour palette, display calculation, and toast notification positioning
+- [ ] **Phase 5: Milestone Completion** - Final testing and deployment
+
+### v1.0 Milestone (Complete)
+
 - [x] **Phase 1: PWA Foundation & Core Bin Management** - Offline-capable app with bin CRUD and state transitions (completed 2026-03-29)
 - [x] **Phase 2: Image Handling & User Interface** - Camera capture, image display, and responsive mobile-first UI (completed 2026-03-29)
 - [x] **Phase 3: Polish & User Experience** - Visual feedback refinements and edge case handling (completed 2026-03-30)
 
 ## Phase Details
 
-### Phase 1: PWA Foundation & Core Bin Management
+### Phase 4: UI Visual Enhancements
+
+**Goal**: Users see a refreshed visual design with consistent colours, calculated bin information, and improved notification positioning
+
+**Depends on**: Phase 3 (completed in v1.0)
+
+**Requirements**:
+- DES-01: App applies new colour palette to all UI elements (backgrounds, buttons, text, cards, containers)
+- DES-02: Colour palette uses Black (#07020d), Sky Surge (#5db7de), Soft Linen (#f1e9db), Khaki Beige (#a39b8b), Dim Grey (#716a5c)
+- DISP-01: Bin cards display "Days in Use" field
+- DISP-02: Days in Use calculates days from inUseStartDate to current date
+- DISP-03: Days in Use displays 0 when bin state is Empty
+- UI-01: Toast notifications appear centered at top of screen (not top-right)
+
+**Success Criteria** (what must be TRUE):
+1. All UI elements (backgrounds, buttons, text, cards, containers) consistently use the new colour palette
+2. Bin cards display "Days in Use" field showing the calculated days from inUseStartDate to current date
+3. When bin state is Empty, "Days in Use" displays 0
+4. Toast notifications appear centered at top of screen (not top-right)
+
+**Plans**: TBD
+
+**Plan list**: None yet
+
+**UI hint**: yes
+
+### Phase 5: Milestone Completion
+
+**Goal**: v1.1 milestone is ready for production deployment with all UI enhancements working correctly
+
+**Depends on**: Phase 4
+
+**Requirements**: (None - validation phase)
+
+**Success Criteria** (what must be TRUE):
+1. All v1.1 requirements are working as specified in user acceptance testing
+2. App passes cross-browser verification (Chrome, Safari, Edge, Firefox)
+3. Performance is not degraded (load times < 2s, smooth interactions)
+4. No regressions in existing v1.0 functionality
+
+**Plans**: TBD
+
+**Plan list**: None yet
+
+**UI hint**: yes
+
+---
+
+### Phase 1: PWA Foundation & Core Bin Management (Complete)
 
 **Goal**: Users can create, view, and manage bins offline with data persisting across sessions
 
@@ -40,12 +95,12 @@
 
 **Plans**: 3 plans
 
-Plan list:
+**Plan list**:
 - [x] 01-01-PLAN.md — Foundation setup (Vite, React, TypeScript, PWA, Dexie)
 - [x] 01-02-PLAN.md — Bin types, data layer, and list component
 - [x] 01-03-PLAN.md — Bin forms, routing, and state transitions
 
-### Phase 2: Image Handling & User Interface
+### Phase 2: Image Handling & User Interface (Complete)
 
 **Goal**: Users can capture and view bin images with a responsive mobile-first interface
 
@@ -68,13 +123,14 @@ Plan list:
 
 **Plans**: 3 plans
 
-Plan list:
+**Plan list**:
 - [x] 02-01-PLAN.md — Image capture & storage (camera, file upload, Blob storage)
 - [x] 02-02-PLAN.md — Image display & thumbnails (BinCard thumbnails, ImageModal)
 - [x] 02-03-PLAN.md — Responsive UI & visual feedback (touch targets, toast notifications)
+
 **UI hint**: yes
 
-### Phase 3: Polish & User Experience
+### Phase 3: Polish & User Experience (Complete)
 
 **Goal**: Users experience a refined app with edge cases handled and smooth interactions
 
@@ -93,22 +149,44 @@ Plan list:
 
 **Plans**: 4 plans
 
-Plan list:
+**Plan list**:
 - [x] 03-01-PLAN.md — Error handling & edge cases
 - [x] 03-02-PLAN.md — Performance & cross-browser support
 - [x] 03-03-PLAN.md — Visual polish & UX refinements
 - [x] 03-04-PLAN.md — End-to-end testing & documentation
+
 **UI hint**: yes
 
 ## Progress
 
+### v1.1 Milestone
+
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. PWA Foundation & Core Bin Management | 3/3 | Complete    | 2026-03-29 |
-| 2. Image Handling & User Interface | 3/3 | Complete    | 2026-03-29 |
-| 3. Polish & User Experience | 4/4 | Complete    | 2026-03-30 |
+| 4. UI Visual Enhancements | 0/1 | Not started | - |
+| 5. Milestone Completion | 0/1 | Not started | - |
+
+### v1.0 Milestone (Complete)
+
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 1. PWA Foundation & Core Bin Management | 3/3 | Complete | 2026-03-29 |
+| 2. Image Handling & User Interface | 3/3 | Complete | 2026-03-29 |
+| 3. Polish & User Experience | 4/4 | Complete | 2026-03-30 |
 
 ## Coverage
+
+### v1.1 Requirements
+
+**v1.1 Requirements:** 6 total
+**Mapped to Phases:** 6 ✓
+**Unmapped:** 0 ✓
+
+**Requirement Distribution:**
+- Phase 4: 6 requirements (Visual Design, Data Display, UI Components)
+- Phase 5: Integration and polish (all requirements validated together)
+
+### v1.0 Requirements (Complete)
 
 **v1 Requirements:** 17 total
 **Mapped to Phases:** 17 ✓
@@ -123,6 +201,15 @@ Plan list:
 - Phase 1 builds foundation (PWA infrastructure, database, core CRUD)
 - Phase 2 adds visual capabilities (images, responsive UI)
 - Phase 3 validates and polishes the complete experience
+- Phase 4 applies v1.1 visual enhancements (colour palette, calculations, notifications)
+- Phase 5 validates v1.1 milestone and prepares for deployment
+
+**Phase Structure Rationale:**
+- v1.1 contains 6 focused UI enhancement requirements that form a coherent delivery
+- All requirements are visual and can be implemented independently without dependencies
+- Single phase (Phase 4) is appropriate for standard granularity
+- Phase 5 provides validation and deployment closure for the milestone
 
 ---
 *Roadmap created: 2025-03-29*
+*Updated: 2026-03-30 for v1.1 milestone*

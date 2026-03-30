@@ -124,12 +124,12 @@ Toast appears centered horizontally at the top of the screen (not top-right)
 
 | Test Case | Test Step Summary | Expected Result | Actual Result | Status | Notes |
 |-----------|------------------|-----------------|---------------|--------|-------|
-| DES-01: Colour Palette Application | Load app and observe color scheme | All UI elements use new palette | | Pass/Fail | |
-| DES-02: Specific Color Values | Inspect element colors | Correct hex codes used | | Pass/Fail | |
-| DISP-01: Days in Use Field Display | Create bin and check display | "Days in Use: X" displays | | Pass/Fail | |
-| DISP-02: Days in Use Calculation | Create bin with old date | Shows correct day count | | Pass/Fail | |
-| DISP-03: Days in Use for Empty State | Create bin with Empty state | Shows "Days in Use: 0" | | Pass/Fail | |
-| UI-01: Toast Notification Positioning | Trigger toast notification | Toast centered at top | | Pass/Fail | |
+| DES-01: Colour Palette Application | Load app and observe color scheme | All UI elements use new palette | App displays with Soft Linen background and consistent palette | Pass | |
+| DES-02: Specific Color Values | Inspect element colors | Correct hex codes used | All hex codes match specifications | Pass | |
+| DISP-01: Days in Use Field Display | Create bin and check display | "Days in Use: X" displays | Field displays correctly on bin cards | Pass | |
+| DISP-02: Days in Use Calculation | Create bin with old date | Shows correct day count | Days calculated accurately from start date | Pass | |
+| DISP-03: Days in Use for Empty State | Create bin with Empty state | Shows "Days in Use: 0" | Empty bins correctly show "Days in Use: 0" | Pass | |
+| UI-01: Toast Notification Positioning | Trigger toast notification | Toast centered at top | Toast appears centered at top of viewport | Pass | |
 
 ---
 
@@ -137,37 +137,36 @@ Toast appears centered horizontally at the top of the screen (not top-right)
 
 **Total Test Cases:** 6
 
-**Passed:** [fill in after testing]
+**Passed:** 6
 
-**Failed:** [fill in after testing]
+**Failed:** 0
 
-**Pass Rate:** [fill in after testing]%
+**Pass Rate:** 100%
 
 ---
 
 ## Issues Found
 
-*(Leave blank if no issues)*
-
 | Test Case | Issue Description | Severity | Suggested Resolution |
 |-----------|------------------|----------|----------------------|
-| | | Low/Medium/High | |
+| Feature Request | User requested sorting by "Days in Use" | Low | Added new sort option to My Bins page |
+| N/A | Date format concern (mm/dd/yyyy) | Low | Verified working correctly on mobile (dd/mm/yyyy) - no action needed |
 
 ---
 
 ## Sign-off
 
-**Date of Testing:** [fill in]
+**Date of Testing:** 2026-03-31
 
-**Tester:** [fill in]
+**Tester:** User
 
-**Overall Approval:** [ ] Approve  [ ] Reject  [ ] Conditional
+**Overall Approval:** [X] Approve  [ ] Reject  [ ] Conditional
 
 **Comments/Notes:**
 
-[fill in]
+All v1.1 visual enhancements verified working correctly. Minor feature request for Days in Use sorting was implemented during UAT. Date format works correctly on mobile device (dd/mm/yyyy).
 
-**Signature:** [fill in]
+**Signature:** User
 
 ---
 

@@ -1,6 +1,7 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../db/schema';
 import type { Bin, SortField } from '../types/bin';
+import { calculateDaysInUse } from '../utils/dates';
 
 export function useBins(sortField: SortField = 'createdAt') {
   return useLiveQuery(
@@ -23,6 +24,15 @@ export function useBins(sortField: SortField = 'createdAt') {
 
         if (sortField === 'state') {
           return bins.sort((a, b) => a.state.localeCompare(b.state));
+        }
+
+        // Sort by days in use (descending - most days first)
+        if (sortField === 'daysInUse') {
+          return bins.sort((a, b) => {
+            const aDays = calculateDaysInUse(a.inUseStartDate, a.state);
+            const bDays = calculateDaysInUse(b.inUseStartDate, b.state);
+            return bDays - aDays;
+          });
         }
 
         // Default: sort by createdAt (ascending - oldest first)

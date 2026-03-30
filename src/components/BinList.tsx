@@ -76,6 +76,7 @@ export function BinList() {
           >
             <option value="name">Name</option>
             <option value="state">State</option>
+            <option value="daysInUse">Days in Use</option>
             <option value="inUseStartDate">In Use Date</option>
             <option value="fermentingStartDate">Fermenting Date</option>
           </select>

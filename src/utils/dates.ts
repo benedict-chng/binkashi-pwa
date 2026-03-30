@@ -37,3 +37,40 @@ export function isSameDay(date1: Date | null, date2: Date | null): boolean {
     date1.getDate() === date2.getDate()
   );
 }
+
+/**
+ * Calculates the number of days between inUseStartDate and current date
+ * @param inUseStartDate - The date the bin started being used
+ * @param state - The current bin state
+ * @returns Number of days in use, or 0 if state is Empty or date is null
+ */
+export const calculateDaysInUse = (
+  inUseStartDate: Date | null,
+  state: 'Empty' | 'In Use' | 'Fermenting'
+): number => {
+  // Return 0 if bin is Empty (per DISP-03)
+  if (state === 'Empty') {
+    return 0;
+  }
+
+  // Return 0 if no start date
+  if (!inUseStartDate) {
+    return 0;
+  }
+
+  const startDate = new Date(inUseStartDate);
+  const currentDate = new Date();
+
+  // Reset time components to compare only dates (not times)
+  startDate.setHours(0, 0, 0, 0);
+  currentDate.setHours(0, 0, 0, 0);
+
+  // Calculate difference in milliseconds
+  const diffInMs = currentDate.getTime() - startDate.getTime();
+
+  // Convert milliseconds to days (round down)
+  const daysInUse = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+
+  // Ensure non-negative (handles future dates)
+  return Math.max(0, daysInUse);
+};

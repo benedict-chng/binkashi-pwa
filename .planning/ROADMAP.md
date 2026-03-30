@@ -8,7 +8,7 @@
 
 ### v1.1 Milestone (Current)
 
-- [ ] **Phase 4: UI Visual Enhancements** - Apply new colour palette, display calculation, and toast notification positioning
+- [x] **Phase 4: UI Visual Enhancements** - Apply new colour palette, display calculation, and toast notification positioning (completed 2026-03-30)
 - [ ] **Phase 5: Milestone Completion** - Final testing and deployment
 
 ### v1.0 Milestone (Complete)
@@ -61,9 +61,12 @@
 3. Performance is not degraded (load times < 2s, smooth interactions)
 4. No regressions in existing v1.0 functionality
 
-**Plans**: TBD
+**Plans**: 3 plans
 
-**Plan list**: None yet
+**Plan list**:
+- [ ] 05-01-PLAN.md — Create UAT checklist and execute user acceptance testing
+- [ ] 05-02-PLAN.md — Perform cross-browser and performance verification
+- [ ] 05-03-PLAN.md — Compile verification results, create deployment checklist, document milestone completion
 
 **UI hint**: yes
 
@@ -165,8 +168,8 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 4. UI Visual Enhancements | 1/2 | In Progress|  |
-| 5. Milestone Completion | 0/1 | Not started | - |
+| 4. UI Visual Enhancements | 2/2 | Complete | 2026-03-30 |
+| 5. Milestone Completion | 0/3 | Not started | - |
 
 ### v1.0 Milestone (Complete)
 
@@ -186,7 +189,7 @@
 
 **Requirement Distribution:**
 - Phase 4: 6 requirements (Visual Design, Data Display, UI Components)
-- Phase 5: Integration and polish (all requirements validated together)
+- Phase 5: Validation and deployment (all requirements validated together)
 
 ### v1.0 Requirements (Complete)
 
@@ -204,13 +207,13 @@
 - Phase 2 adds visual capabilities (images, responsive UI)
 - Phase 3 validates and polishes the complete experience
 - Phase 4 applies v1.1 visual enhancements (colour palette, calculations, notifications)
-- Phase 5 validates v1.1 milestone and prepares for deployment
+- Phase 5 validates v1.1 milestone through UAT, cross-browser, and performance testing
 
 **Phase Structure Rationale:**
 - v1.1 contains 6 focused UI enhancement requirements that form a coherent delivery
 - All requirements are visual and can be implemented independently without dependencies
-- Single phase (Phase 4) is appropriate for standard granularity
-- Phase 5 provides validation and deployment closure for the milestone
+- Phase 4 implements the visual enhancements (2 plans for standard granularity)
+- Phase 5 provides comprehensive validation and deployment preparation (3 plans for thorough testing)
 
 ---
 *Roadmap created: 2025-03-29*

@@ -42,7 +42,7 @@
 **Plans**: 2 plans
 
 **Plan list**:
-- [ ] 04-01-PLAN.md — Apply new colour palette to all UI elements
+- [x] 04-01-PLAN.md — Apply new colour palette to all UI elements
 - [x] 04-02-PLAN.md — Add Days in Use calculation and center toast notifications
 
 **UI hint**: yes

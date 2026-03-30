@@ -9,8 +9,8 @@ Requirements for UI enhancements milestone.
 
 ### Visual Design
 
-- [ ] **DES-01**: App applies new colour palette to all UI elements (backgrounds, buttons, text, cards, containers)
-- [ ] **DES-02**: Colour palette uses Black (#07020d), Sky Surge (#5db7de), Soft Linen (#f1e9db), Khaki Beige (#a39b8b), Dim Grey (#716a5c)
+- [x] **DES-01**: App applies new colour palette to all UI elements (backgrounds, buttons, text, cards, containers)
+- [x] **DES-02**: Colour palette uses Black (#07020d), Sky Surge (#5db7de), Soft Linen (#f1e9db), Khaki Beige (#a39b8b), Dim Grey (#716a5c)
 
 ### Data Display
 
@@ -104,8 +104,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DES-01 | Phase 4 | Pending |
-| DES-02 | Phase 4 | Pending |
+| DES-01 | Phase 4 | Complete |
+| DES-02 | Phase 4 | Complete |
 | DISP-01 | Phase 4 | Complete |
 | DISP-02 | Phase 4 | Complete |
 | DISP-03 | Phase 4 | Complete |

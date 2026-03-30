@@ -8,7 +8,20 @@ Binkashi is a single-user offline-first Progressive Web App (PWA) for tracking b
 
 Users can quickly add and update bokashi compost bins on their phone without an internet connection, with automatic state transitions and image capture.
 
+## Current Milestone: v1.1 UI Enhancements
+
+**Goal:** Improve the app's visual identity and user experience with a new colour palette, display calculation, and better notification positioning.
+
+**Target features:**
+- Apply new colour palette (Black, Sky Surge, Soft Linen, Khaki Beige, Dim Grey) to all UI elements
+- Display "Days in Use" field showing days from inUseStartDate to current date (0 when Empty)
+- Center toast notifications at top of screen (currently top-right)
+
+---
+
 ## Requirements
+
+### Active (v1.1)
 
 ### Validated
 
@@ -83,4 +96,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-30 after v1 milestone completion*
+*Last updated: 2026-03-30 starting v1.1 milestone*

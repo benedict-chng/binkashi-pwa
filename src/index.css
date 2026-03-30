@@ -1,30 +1,14 @@
 @import "tailwindcss";
 
-@layer theme {
-  @custom-variant dark (&:where(.dark, .dark *));
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
-/* Custom colour palette */
-@layer utilities {
-  .bg-black { background-color: #07020d; }
-  .text-black { color: #07020d; }
-  .border-black { border-color: #07020d; }
-
-  .bg-sky-surge { background-color: #5db7de; }
-  .text-sky-surge { color: #5db7de; }
-  .border-sky-surge { border-color: #5db7de; }
-
-  .bg-soft-linen { background-color: #f1e9db; }
-  .text-soft-linen { color: #f1e9db; }
-  .border-soft-linen { border-color: #f1e9db; }
-
-  .bg-khaki-beige { background-color: #a39b8b; }
-  .text-khaki-beige { color: #a39b8b; }
-  .border-khaki-beige { border-color: #a39b8b; }
-
-  .bg-dim-grey { background-color: #716a5c; }
-  .text-dim-grey { color: #716a5c; }
-  .border-dim-grey { border-color: #716a5c; }
+/* Custom colour palette using Tailwind 4 @theme directive */
+@theme {
+  --color-black: #07020d;
+  --color-sky-surge: #5db7de;
+  --color-soft-linen: #f1e9db;
+  --color-khaki-beige: #a39b8b;
+  --color-dim-grey: #716a5c;
 }
 
 body {

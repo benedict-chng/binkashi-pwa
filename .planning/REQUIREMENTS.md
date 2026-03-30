@@ -14,13 +14,13 @@ Requirements for UI enhancements milestone.
 
 ### Data Display
 
-- [ ] **DISP-01**: Bin cards display "Days in Use" field
-- [ ] **DISP-02**: Days in Use calculates days from inUseStartDate to current date
-- [ ] **DISP-03**: Days in Use displays 0 when bin state is Empty
+- [x] **DISP-01**: Bin cards display "Days in Use" field
+- [x] **DISP-02**: Days in Use calculates days from inUseStartDate to current date
+- [x] **DISP-03**: Days in Use displays 0 when bin state is Empty
 
 ### UI Components
 
-- [ ] **UI-01**: Toast notifications appear centered at top of screen (not top-right)
+- [x] **UI-01**: Toast notifications appear centered at top of screen (not top-right)
 
 ## v1 Requirements (Complete)
 
@@ -106,10 +106,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | DES-01 | Phase 4 | Pending |
 | DES-02 | Phase 4 | Pending |
-| DISP-01 | Phase 4 | Pending |
-| DISP-02 | Phase 4 | Pending |
-| DISP-03 | Phase 4 | Pending |
-| UI-01 | Phase 4 | Pending |
+| DISP-01 | Phase 4 | Complete |
+| DISP-02 | Phase 4 | Complete |
+| DISP-03 | Phase 4 | Complete |
+| UI-01 | Phase 4 | Complete |
 
 **v1.1 Coverage:**
 - v1.1 requirements: 6 total

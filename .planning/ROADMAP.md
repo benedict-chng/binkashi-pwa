@@ -43,7 +43,7 @@
 
 **Plan list**:
 - [ ] 04-01-PLAN.md — Apply new colour palette to all UI elements
-- [ ] 04-02-PLAN.md — Add Days in Use calculation and center toast notifications
+- [x] 04-02-PLAN.md — Add Days in Use calculation and center toast notifications
 
 **UI hint**: yes
 
@@ -165,7 +165,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 4. UI Visual Enhancements | 0/2 | Planning in progress | - |
+| 4. UI Visual Enhancements | 1/2 | In Progress|  |
 | 5. Milestone Completion | 0/1 | Not started | - |
 
 ### v1.0 Milestone (Complete)

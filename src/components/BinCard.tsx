@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import type { Bin } from '../types/bin';
 import { getStateLabel, formatBinDate } from '../types/bin';
+import { calculateDaysInUse } from '../utils/dates';
 
 interface BinCardProps {
   bin: Bin;
@@ -148,6 +149,11 @@ export function BinCard({ bin, onImageClick, onDelete, onEdit }: BinCardProps) {
           }`}>
             {getStateLabel(bin.state)}
           </span>
+        </div>
+
+        <div className="flex justify-between">
+          <span className="text-gray-600 font-medium">Days in Use:</span>
+          <span className="text-gray-900 font-semibold">{calculateDaysInUse(bin.inUseStartDate, bin.state)}</span>
         </div>
 
         <div className="flex justify-between">

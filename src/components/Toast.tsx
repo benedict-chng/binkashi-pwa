@@ -60,7 +60,7 @@ interface ToastContainerProps {
 
 function ToastContainer({ toasts, onRemove }: ToastContainerProps) {
   return (
-    <div className="fixed top-4 right-4 z-50 space-y-2">
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 space-y-2 flex flex-col items-center">
       {toasts.map((toast) => (
         <ToastItem key={toast.id} toast={toast} onRemove={onRemove} />
       ))}
@@ -91,7 +91,7 @@ function ToastItem({ toast, onRemove }: ToastItemProps) {
 
   return (
     <div
-      className={`${bgColor} text-white px-4 py-3 rounded-md shadow-lg transform transition-all duration-300 ease-in-out animate-in slide-in-from-right fade-in`}
+      className={`${bgColor} text-white px-4 py-3 rounded-md shadow-lg transform transition-all duration-300 ease-in-out animate-in slide-in-from-top fade-in`}
       role="alert"
     >
       <p className="text-sm font-medium">{toast.message}</p>

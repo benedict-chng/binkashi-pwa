@@ -78,13 +78,13 @@ export function BinCard({ bin, onImageClick, onDelete, onEdit }: BinCardProps) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover relative">
+    <div className="bg-white rounded-lg shadow-md border border-khaki-beige overflow-hidden card-hover relative">
       {/* Edit/Delete buttons - always visible */}
       <div className="absolute top-2 right-2 z-10 flex gap-2">
         {onEdit && bin.id !== undefined && (
           <button
             onClick={() => onEdit(bin.id!)}
-            className="bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center shadow-md"
+            className="bg-sky-surge text-black p-2 rounded-md hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-sky-surge focus:ring-offset-2 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center shadow-md"
             aria-label="Edit bin"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -109,14 +109,14 @@ export function BinCard({ bin, onImageClick, onDelete, onEdit }: BinCardProps) {
         <div className="relative">
           {/* Image container */}
           {!imageLoaded && (
-            <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-500"></div>
+            <div className="w-full h-48 bg-khaki-beige flex items-center justify-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sky-surge"></div>
             </div>
           )}
 
           {imageError && (
-            <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
-              <p className="text-gray-500 text-sm">Image failed to load</p>
+            <div className="w-full h-48 bg-khaki-beige flex items-center justify-center">
+              <p className="text-dim-grey text-sm">Image failed to load</p>
             </div>
           )}
 
@@ -137,33 +137,33 @@ export function BinCard({ bin, onImageClick, onDelete, onEdit }: BinCardProps) {
         </div>
       )}
       <div className="p-6">
-        <h3 className="text-xl font-semibold text-gray-900 mb-4 leading-tight">{bin.name}</h3>
+        <h3 className="text-xl font-semibold text-black mb-4 leading-tight">{bin.name}</h3>
 
       <div className="space-y-3 text-sm">
         <div className="flex justify-between">
-          <span className="text-gray-600 font-medium">State:</span>
+          <span className="text-dim-grey font-medium">State:</span>
           <span className={`font-semibold ${
-            bin.state === 'Empty' ? 'text-gray-500' :
-            bin.state === 'In Use' ? 'text-blue-600' :
-            'text-green-600'
+            bin.state === 'Empty' ? 'text-dim-grey' :
+            bin.state === 'In Use' ? 'text-sky-surge' :
+            'text-sky-surge'
           }`}>
             {getStateLabel(bin.state)}
           </span>
         </div>
 
         <div className="flex justify-between">
-          <span className="text-gray-600 font-medium">Days in Use:</span>
-          <span className="text-gray-900 font-semibold">{calculateDaysInUse(bin.inUseStartDate, bin.state)}</span>
+          <span className="text-dim-grey font-medium">Days in Use:</span>
+          <span className="text-black font-semibold">{calculateDaysInUse(bin.inUseStartDate, bin.state)}</span>
         </div>
 
         <div className="flex justify-between">
-          <span className="text-gray-600 font-medium">In Use Since:</span>
-          <span className="text-gray-700">{formatBinDate(bin.inUseStartDate)}</span>
+          <span className="text-dim-grey font-medium">In Use Since:</span>
+          <span className="text-black">{formatBinDate(bin.inUseStartDate)}</span>
         </div>
 
         <div className="flex justify-between">
-          <span className="text-gray-600 font-medium">Fermenting Since:</span>
-          <span className="text-gray-700">{formatBinDate(bin.fermentingStartDate)}</span>
+          <span className="text-dim-grey font-medium">Fermenting Since:</span>
+          <span className="text-black">{formatBinDate(bin.fermentingStartDate)}</span>
         </div>
       </div>
       </div>

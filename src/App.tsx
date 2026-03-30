@@ -44,11 +44,11 @@ function AppContent() {
   }, [showToast]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-soft-linen">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-soft-linen shadow-sm border-b border-khaki-beige">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-green-600">Binkashi</h1>
+          <h1 className="text-3xl font-bold text-black">Binkashi</h1>
           <AddBinButton />
         </div>
       </header>
@@ -69,7 +69,7 @@ function AddBinButton() {
   return (
     <Link
       to="/bins/new"
-      className="btn-primary bg-green-600 text-white px-6 py-3 rounded-md text-base font-medium"
+      className="btn-primary bg-sky-surge text-black px-6 py-3 rounded-md text-base font-medium"
     >
       + Add Bin
     </Link>
@@ -89,12 +89,12 @@ function CreateBinPage() {
     <div className="w-full max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
       <button
         onClick={() => navigate('/')}
-        className="text-gray-600 hover:text-gray-900 mb-4 font-medium transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded-md px-2 py-1"
+        className="text-dim-grey hover:text-black mb-4 font-medium transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-surge focus:ring-offset-2 rounded-md px-2 py-1"
       >
         ← Back to List
       </button>
-      <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 leading-tight">Create New Bin</h2>
+      <div className="bg-white border border-khaki-beige rounded-lg shadow-md p-6 sm:p-8">
+        <h2 className="text-2xl font-bold text-black mb-6 leading-tight">Create New Bin</h2>
         <BinForm onSubmit={handleSubmit} />
       </div>
     </div>
@@ -127,12 +127,12 @@ function EditBinPage() {
     <div className="w-full max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
       <button
         onClick={() => navigate('/')}
-        className="text-gray-600 hover:text-gray-900 mb-4 font-medium transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded-md px-2 py-1"
+        className="text-dim-grey hover:text-black mb-4 font-medium transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-surge focus:ring-offset-2 rounded-md px-2 py-1"
       >
         ← Back to List
       </button>
-      <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 leading-tight">Edit Bin</h2>
+      <div className="bg-white border border-khaki-beige rounded-lg shadow-md p-6 sm:p-8">
+        <h2 className="text-2xl font-bold text-black mb-6 leading-tight">Edit Bin</h2>
         <BinForm onSubmit={handleSubmit} initialData={initialData} editMode binId={bin.id} />
       </div>
     </div>

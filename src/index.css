@@ -1,7 +1,34 @@
 @import "tailwindcss";
 
+@layer theme {
+  @custom-variant dark (&:where(.dark, .dark *));
+}
+
+/* Custom colour palette */
+@layer utilities {
+  .bg-black { background-color: #07020d; }
+  .text-black { color: #07020d; }
+  .border-black { border-color: #07020d; }
+
+  .bg-sky-surge { background-color: #5db7de; }
+  .text-sky-surge { color: #5db7de; }
+  .border-sky-surge { border-color: #5db7de; }
+
+  .bg-soft-linen { background-color: #f1e9db; }
+  .text-soft-linen { color: #f1e9db; }
+  .border-soft-linen { border-color: #f1e9db; }
+
+  .bg-khaki-beige { background-color: #a39b8b; }
+  .text-khaki-beige { color: #a39b8b; }
+  .border-khaki-beige { border-color: #a39b8b; }
+
+  .bg-dim-grey { background-color: #716a5c; }
+  .text-dim-grey { color: #716a5c; }
+  .border-dim-grey { border-color: #716a5c; }
+}
+
 body {
-  @apply bg-gray-50 text-gray-900;
+  @apply bg-soft-linen text-black;
 }
 
 /* Base transitions */
@@ -15,7 +42,7 @@ body {
 
 /* Button transitions */
 .btn-primary {
-  @apply transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2;
+  @apply transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-sky-surge focus:ring-offset-2;
 }
 
 .btn-secondary {
@@ -29,7 +56,7 @@ body {
 
 /* Form input transitions */
 .input-base {
-  @apply transition-all duration-200 ease-in-out focus:border-green-500 focus:ring-2 focus:ring-green-500;
+  @apply transition-all duration-200 ease-in-out focus:border-sky-surge focus:ring-2 focus:ring-sky-surge;
 }
 
 /* Modal transitions */
@@ -105,10 +132,10 @@ body {
 /* Focus ring animation */
 @keyframes focusRing {
   0% {
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    box-shadow: 0 0 0 0 rgba(93, 183, 222, 0);
   }
   100% {
-    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
+    box-shadow: 0 0 0 3px rgba(93, 183, 222, 0.3);
   }
 }
 

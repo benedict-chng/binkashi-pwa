@@ -52,7 +52,7 @@ export function BinList() {
         action={
           <Link
             to="/bins/new"
-            className="btn-primary bg-green-600 text-white px-6 py-3 rounded-md text-base font-medium"
+            className="btn-primary bg-sky-surge text-black px-6 py-3 rounded-md text-base font-medium"
           >
             Create First Bin
           </Link>
@@ -65,14 +65,14 @@ export function BinList() {
     <div className="space-y-8">
       {/* Sorting controls */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <h2 className="text-2xl font-bold text-gray-900 leading-tight">My Bins</h2>
+        <h2 className="text-2xl font-bold text-black leading-tight">My Bins</h2>
         <div className="flex items-center gap-2">
-          <label htmlFor="sort" className="text-sm text-gray-600 font-medium">Sort by:</label>
+          <label htmlFor="sort" className="text-sm text-dim-grey font-medium">Sort by:</label>
           <select
             id="sort"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as SortField)}
-            className="px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 input-base"
+            className="px-4 py-2 border border-khaki-beige rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-sky-surge focus:border-sky-surge input-base"
           >
             <option value="name">Name</option>
             <option value="state">State</option>

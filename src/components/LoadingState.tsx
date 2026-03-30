@@ -13,12 +13,12 @@ export function LoadingState({ message, size = 'medium' }: LoadingStateProps) {
   return (
     <div className="flex flex-col items-center justify-center py-8 modal-fade-in">
       <div
-        className={`animate-spin rounded-full ${sizeClasses[size]} border-green-600 border-t-transparent`}
+        className={`animate-spin rounded-full ${sizeClasses[size]} border-sky-surge border-t-transparent`}
         role="status"
         aria-label="Loading"
       />
       {message && (
-        <p className="text-gray-500 mt-4 text-sm">{message}</p>
+        <p className="text-dim-grey mt-4 text-sm">{message}</p>
       )}
     </div>
   );

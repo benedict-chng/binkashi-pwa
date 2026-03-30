@@ -15,8 +15,8 @@ export function EmptyState({ icon, title, message, action }: EmptyStateProps) {
           {icon}
         </div>
       )}
-      <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
-      <p className="text-gray-500 mb-6 max-w-sm">{message}</p>
+      <h3 className="text-xl font-semibold text-black mb-2">{title}</h3>
+      <p className="text-dim-grey mb-6 max-w-sm">{message}</p>
       {action && <div className="modal-fade-in">{action}</div>}
     </div>
   );

@@ -165,7 +165,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin', edi
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Name field */}
       <div>
-        <label htmlFor="name" className="block text-base font-medium text-gray-700 mb-2">
+        <label htmlFor="name" className="block text-base font-medium text-dim-grey mb-2">
           Name *
         </label>
         <input
@@ -174,8 +174,8 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin', edi
           value={formData.name}
           onChange={(e) => handleFieldChange('name', e.target.value)}
           placeholder="e.g., Kitchen Bin"
-          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 input-base ${
-            errors.name ? 'border-red-500' : 'border-gray-300'
+          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-sky-surge input-base ${
+            errors.name ? 'border-red-500' : 'border-khaki-beige'
           }`}
           disabled={isSubmitting}
           aria-invalid={errors.name ? 'true' : 'false'}
@@ -186,14 +186,14 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin', edi
 
       {/* State field */}
       <div>
-        <label htmlFor="state" className="block text-base font-medium text-gray-700 mb-2">
+        <label htmlFor="state" className="block text-base font-medium text-dim-grey mb-2">
           State
         </label>
         <select
           id="state"
           value={formData.state}
           onChange={(e) => handleFieldChange('state', e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 input-base"
+          className="w-full px-4 py-3 border border-khaki-beige rounded-md focus:outline-none focus:ring-2 focus:ring-sky-surge focus:border-sky-surge input-base"
           disabled={isSubmitting}
         >
           {BIN_STATES.map((state) => (
@@ -202,14 +202,14 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin', edi
             </option>
           ))}
         </select>
-        <p className="text-xs text-gray-500 mt-2 leading-relaxed">
+        <p className="text-xs text-dim-grey mt-2 leading-relaxed">
           Changing state may auto-set or clear dates
         </p>
       </div>
 
       {/* In Use Start Date field */}
       <div>
-        <label htmlFor="inUseStartDate" className="block text-base font-medium text-gray-700 mb-2">
+        <label htmlFor="inUseStartDate" className="block text-base font-medium text-dim-grey mb-2">
           In Use Start Date
         </label>
         <input
@@ -217,17 +217,17 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin', edi
           id="inUseStartDate"
           value={formatDateForInput(formData.inUseStartDate)}
           onChange={(e) => handleFieldChange('inUseStartDate', e.target.value ? new Date(e.target.value) : null)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 input-base"
+          className="w-full px-4 py-3 border border-khaki-beige rounded-md focus:outline-none focus:ring-2 focus:ring-sky-surge focus:border-sky-surge input-base"
           disabled={isSubmitting}
         />
         {formData.state === 'Empty' && (
-          <p className="text-xs text-gray-500 mt-2">Date will be cleared when state changes to Empty</p>
+          <p className="text-xs text-dim-grey mt-2">Date will be cleared when state changes to Empty</p>
         )}
       </div>
 
       {/* Fermenting Start Date field */}
       <div>
-        <label htmlFor="fermentingStartDate" className="block text-base font-medium text-gray-700 mb-2">
+        <label htmlFor="fermentingStartDate" className="block text-base font-medium text-dim-grey mb-2">
           Fermenting Start Date
         </label>
         <input
@@ -235,20 +235,20 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin', edi
           id="fermentingStartDate"
           value={formatDateForInput(formData.fermentingStartDate)}
           onChange={(e) => handleFieldChange('fermentingStartDate', e.target.value ? new Date(e.target.value) : null)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 input-base"
+          className="w-full px-4 py-3 border border-khaki-beige rounded-md focus:outline-none focus:ring-2 focus:ring-sky-surge focus:border-sky-surge input-base"
           disabled={isSubmitting}
         />
         {formData.state === 'Empty' && (
-          <p className="text-xs text-gray-500 mt-2">Date will be cleared when state changes to Empty</p>
+          <p className="text-xs text-dim-grey mt-2">Date will be cleared when state changes to Empty</p>
         )}
       </div>
 
       {/* Image section */}
       <div>
-        <label className="block text-base font-medium text-gray-700 mb-2">
+        <label className="block text-base font-medium text-dim-grey mb-2">
           Image
         </label>
-        <p className="text-xs text-gray-500 mb-3 leading-relaxed">Optional: Add a photo of your bin</p>
+        <p className="text-xs text-dim-grey mb-3 leading-relaxed">Optional: Add a photo of your bin</p>
 
         {/* Image preview */}
         {imagePreview && (
@@ -256,7 +256,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin', edi
             <img
               src={imagePreview}
               alt="Bin preview"
-              className="max-w-full h-48 object-cover rounded-md border border-gray-300"
+              className="max-w-full h-48 object-cover rounded-md border border-khaki-beige"
             />
             <button
               type="button"
@@ -282,7 +282,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin', edi
             />
             <label
               htmlFor="upload-photo"
-              className={`block w-full text-center bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer ${
+              className={`block w-full text-center bg-sky-surge text-black py-3 px-4 rounded-md hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-sky-surge focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer ${
                 isCompressing ? 'opacity-75' : ''
               }`}
             >
@@ -302,7 +302,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin', edi
             />
             <label
               htmlFor="take-photo"
-              className={`block w-full text-center bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer ${
+              className={`block w-full text-center bg-sky-surge text-black py-3 px-4 rounded-md hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-sky-surge focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer ${
                 isCompressing ? 'opacity-75' : ''
               }`}
             >
@@ -316,7 +316,7 @@ export function BinForm({ onSubmit, initialData, submitLabel = 'Create Bin', edi
       <button
         type="submit"
         disabled={isSubmitting || isCompressing}
-        className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed btn-primary"
+        className="w-full bg-sky-surge text-black py-3 px-4 rounded-md hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-sky-surge focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed btn-primary"
       >
         {isSubmitting ? 'Saving...' : (editMode ? 'Update Bin' : submitLabel)}
       </button>
